@@ -1,0 +1,20 @@
+@css landing @endcss
+@js landing @endjs
+
+<div class='flex center saqle-landing-wrapper'>
+	<div class='saqle-landing'>
+		<div class='flex v_center saqle-landing-header'>
+			<div class='flex v_center header-title'>
+				<h1>SaQle</h1>
+			</div>
+			<div class='flex v_center header-nav'>
+				 <a class='flex center' href='/about'>About</a>
+				 <a class='flex center' href='/signin'>Login</a>
+				 <a class='flex center' href='/signup'>Register</a>
+			</div>
+		</div>
+		<div class='saqle-landing-body'>
+			 <component:slot/>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,16 @@
+.saqle-about{
+	padding-top:2em;
+	padding-bottom: 2em;
+}
+.saqle-about h1{
+	font-size: 25px;
+	font-weight: 600;
+	color:var(--steel_gray_200);
+}
+.saqle-about p, li{
+	font-size: 17px;
+	margin-top:20px;
+	color: var(--steel_gray_20);
+	font-weight: 600;
+	line-height: 1.2em;
+}

@@ -1,0 +1,67 @@
+@css booiba @endcss
+@js landing @endjs
+@title Personalized interactions with the famous &amp; influential, career mentors, life coaches and mental health specialists! @endtitle
+@meta 
+   <meta property='og:title' content='Booibo'/>
+   <meta property='og:type' content='Website'/>
+   <meta property='og:description' content='Personalized interactions with the famous &amp; influential, career mentors, life coaches and mental health specialists!'/>
+   <meta property='og:image' content='https://www.booibo.com/static/images/layout/booiboimage.png'/>
+   <meta property='og:image:url' content='https://www.booibo.com/static/images/layout/booiboimage.png'/>
+   <meta property='og:image:secure_url' content='https://www.booibo.com/static/images/layout/booiboimage.png'/>
+   <meta property='og:image:width' content='1344px'/>
+   <meta property='og:image:height' content='633px'/>
+   <meta property='og:url' content='https://www.booibo.com/'>
+@endmeta
+
+<div class='booiba'>
+     <div class='flex center booiba-header-wrapper'>
+	     <div class='flex booiba-header'>
+		     <div class='flex v_center booiba-header-title'>
+		         <span id='toggleMenu' class='flex center'><i data-lucide='align-justify'></i></span>
+			     <span class='flex center'><a style='text-decoration:none;'href='{{ $base_url }}'>SaQle</a></span>
+			 </div>
+			 <div class='flex row_reverse v_center booiba-header-nav'>
+			     @if( $isloggedin === true )
+			         <a href='{{ $base_url }}'>
+			     	     <img style='width:40px; height: 40px; border-radius:50%;' src='{{ $profilephoto }}'>
+	 		         </a>
+			     @else
+			         <a class='ctaLinksNav' href='{{ $base_url }}signin/'>Signin</a>
+		             <a class='flex jf1' href='{{ $base_url }}signup/'>Join for free</a>
+			     @endif
+				 <a class='flex bc1' href='#'>Careers</a>
+				 <a class='flex bc1' href='#'>Faqs</a>
+				 <a class='flex hw1' href='#'>How It Works</a>
+				 <!--<a class='flex hw1' href='{{ $base_url }}talents/'>People</a>-->
+				 <a class='flex fq1' href='{{ $base_url }}about/'>About us</a>
+			 </div>
+			 <div class='booiba-header-nav booiba-header-nav-sec hide'>
+			     <!--<a class='flex bc2' href='{{ $base_url }}talents/'>Browse Talents</a>
+			     <a class='flex hw2' href='{{ $base_url }}#howitworks'>How It Works</a>
+			     <a class='flex fq2' href='{{ $base_url }}#faqs'>Faqs</a>-->
+			     @if( $isloggedin === false )
+			         <!--<a class='flex jf2' href='{{ $base_url }}signup/fan/'>Join as fan</a>
+		             <a class='flex jt2' href='{{ $base_url }}signup/talent/'>Join as talent</a>-->
+		             <a class='flex jf2' href='{{ $base_url }}signup/'>Join for free</a>
+			     @endif
+			 </div>
+		 </div>
+	 </div>
+	 <div class='booiba-content-wrapper'>
+	     <component:slot/>
+	 </div>
+	 <div class='flex center footer-wrapper'>
+	 	 <div class='footer'>
+	 	 	 <div class='flex v_center'>
+	 	 	 	 <a class='flex v_center' href='#'>Terms &amp; conditions</a>
+				 <a class='flex v_center' href='#'>Privacy policy</a>
+				 <a class='flex v_center' href='#'>Community guidlines</a>
+	 	 	 </div>
+	 	 	 <div class='flex row_reverse v_center'>
+	 	 	 	 <span><i class='fa-solid fa-globe'></i>&nbsp;https://www.saqle.com</span>
+	 	 	 	 <span><i class='fa-solid fa-envelope'></i>&nbsp;support@booibo.com</span>
+	 	 	 	 <span><i class='fa-solid fa-phone'></i>&nbsp;+254 7411 420 38</span>
+	 	 	 </div>
+	 	 </div>
+	 </div>
+ </div>

@@ -1,0 +1,26 @@
+# ignore ALL .log files
+*.log
+logs/
+
+# ignore ALL .ini files
+*.ini
+
+# ignore ALL .lock files
+*.lock
+
+# ignore ALL files in ANY directory named vendor
+vendor/
+
+# ignore ALL files in ANY directory named tmp
+tmp/
+
+#ignore env file
+*.env
+env/
+
+#ignore storage folder
+storage/
+
+#ignore migrations(remove this later)
+migrations/
+snapshots/

@@ -1,0 +1,35 @@
+.saqle-landing-wrapper{
+	width:100vw;
+	background-color:var(--background_color);
+}
+.saqle-landing{
+	display:grid;
+	grid-template-rows:70px 1fr;
+	grid-template-columns:1fr;
+	width:70%;
+}
+.saqle-landing-body{
+	min-height: calc(100vh - 70px);
+	overflow-y: auto;
+}
+.saqle-landing-header{
+
+}
+.header-title{
+	flex: 1;
+}
+.header-title h1{
+	color:#fff;
+	font-size: 30px;
+}
+.header-nav{
+
+}
+.header-nav a{
+	height:40px;
+	color:var(--steel_gray_100);
+	text-decoration:none;
+	margin-left:1em;
+	font-weight: 600;
+	font-size:14px;
+}

@@ -1,0 +1,19 @@
+.cta{
+	 height: calc(100vh - 70px);
+}
+.cta h1{
+	font-size: 50px;
+	font-weight: 600;
+	color:yellow;
+}
+.cta p{
+	font-size: 20px;
+	margin-top:10px;
+	color: var(--steel_gray_20);
+	font-weight: 600;
+	line-height: 1.2em;
+}
+.cta img{
+	 width:100%;
+	 object-fit: contain;
+}

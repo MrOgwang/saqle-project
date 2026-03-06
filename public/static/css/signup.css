@@ -1,0 +1,14 @@
+.saqle-signup{
+	display:grid;
+	grid-template-rows:auto 1fr;
+	grid-template-columns: 1fr;
+	height:calc(100vh - 70px);
+	padding-top:2em;
+	padding-bottom:2em;
+}
+.saqle-signup-body{
+	margin-top:1em;
+}
+.saqle-signup-header{
+	color:var(--steel_gray_60);
+}
