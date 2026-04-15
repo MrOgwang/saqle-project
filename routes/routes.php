@@ -5,7 +5,7 @@ namespace App\Routes;
 
 use SaQle\Routes\Router;
 
-Router::get("/", 'cta')->compose_with(['landing']);
-Router::get("/about/", 'about')->compose_with(['landing']);
+Router::get("/", 'cta')->compose_with(['landing'])->name('app.landing');
+Router::get("/about/", 'about')->compose_with(['landing'])->name('app.about');
 
 ?>

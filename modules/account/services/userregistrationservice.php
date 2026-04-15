@@ -10,6 +10,8 @@ use SaQle\Auth\Services\{
 };
 use SaQle\Core\Services\IService;
 use App\Modules\Account\Models\{User, Contact};
+use SaQle\Core\Support\Queue;
+use App\Modules\Account\Notifications\WelcomeEmail;
 
 class UserRegistrationService implements IService, UserRegistrationInterface {
 
@@ -22,16 +24,18 @@ class UserRegistrationService implements IService, UserRegistrationInterface {
      #[Emits(after: ['user.registered'])]
 	 public function register(...$data) : mixed {
 
-         return Db::transaction(function() use ($data){
+	 	 $is_superuser = $data['is_superuser'] ?? 0;
+		 
+         return Db::transaction(function() use ($data, $is_superuser){
 			 $user = User::create([
 			 	 'first_name' => $data['first_name'],
 			 	 'last_name' => $data['last_name'],
 			 	 'username' => $data['username'],
 			 	 'password' => md5($data['password']),
-			 	 'is_superuser' => $data['is_superuser'],
+			 	 'is_superuser' => $is_superuser,
 			 	 'gender' => $data['gender'],
 			 	 'profilephoto' => $data['profilephoto']
-			 ])->save();
+			 ])->now();
 
 			 $contact = Contact::create([
 			 	 'contact_type' => 'email',
@@ -39,7 +43,17 @@ class UserRegistrationService implements IService, UserRegistrationInterface {
 			 	 'contact' => $data['email'],
 			 	 'owner_type' => 'user',
 			 	 'owner_id' => $user->user_id
-			 ])->save();
+			 ])->now();
+			 
+			 $email = new WelcomeEmail([
+	 	 		 'firstname' => $data['first_name'],
+	             'email' => $data['email'],
+	             'username' => $data['username'],
+	             'password' => $data['password']
+		 	 ]);
+
+	 	     //queue email to send immediatly
+	 	     Queue::dispatch($email, 'emails');
 
 			 return (Object)['user' => $user, 'password' => $data['password'], 'username' => $data['username']];
          });

@@ -5,6 +5,7 @@
  * */
 
 use SaQle\Core\Files\Storage\Drivers\LocalStorageDriver;
+use SaQle\Core\Files\Generators\DefaultPrivateFileUrlGenerator;
 
 return [
 
@@ -24,16 +25,16 @@ return [
       * List of all the modules in the project. 
       * A module is generally a folder with controllers, templates and routes
       * */
-   'modules' => ['account'],
-
- 	 //the name of the root media folder
- 	 'media_folder' => 'mediacontentbooibo',
+     'modules' => ['account'],
 
      //the url for media
      'media_url' => '/media/',
 
      //the media url encryption key
-     'media_key' => '3rt8vfweft9823t2gfv29y23ud-02cfi9ft39fg239',
+     'media_encrypt_key' => '3rt8vfweft9823t2gfv29y23ud-02cfi9ft39fg239',
+
+     //the media url encryption salt
+     'media_encrypt_salt' => 'media-url-salt',
 
      //the url prefix for cron jobs
      'cron_url' => '/cron/',
@@ -45,9 +46,10 @@ return [
      'media_storage_drivers' => [
          'local' => [
              'driver' => LocalStorageDriver::class,
-             'root' => '/var/www/app/public/uploads',
-             'visibility' => 'public',
-             'base_url' => 'https://example.com/uploads',
+             'root' => media_root('media', false),
+             'visibility' => 'private',
+             'base_url' => '/media',
+             'private_url_generator' => DefaultPrivateFileUrlGenerator::class
          ],
      ],
 

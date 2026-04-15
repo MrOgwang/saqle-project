@@ -2,8 +2,14 @@
 namespace App\Services\Providers;
 
 use SaQle\Core\Services\Providers\ServiceProvider;
-use SaQle\Auth\Events\{LoginSucceeded, Logout};
-use App\Modules\Account\Listeners\{RecordUserLogIn, RecordUserLogOut};
+use SaQle\Auth\Events\{
+     LoginSucceeded, 
+     Logout
+};
+use App\Modules\Account\Listeners\{
+     RecordUserLogIn, 
+     RecordUserLogOut
+};
 
 class EventServiceProvider extends ServiceProvider {
 

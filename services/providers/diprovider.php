@@ -16,11 +16,20 @@ use App\Modules\Account\Repositories\{
 
 class DIProvider extends ServiceProvider {
      public function register(): void {
-         $this->app->container->bind(VerificationCodeRepositoryInterface::class, EloquentVerificationCodeRepository::class);
+         $this->app->container->bind(
+             VerificationCodeRepositoryInterface::class, 
+             EloquentVerificationCodeRepository::class
+         );
 
-         $this->app->container->bind(UserRepositoryInterface::class, EloquentUserRepository::class);
+         $this->app->container->bind(
+             UserRepositoryInterface::class, 
+             EloquentUserRepository::class
+         );
 
-         $this->app->container->bind(ContactRepositoryInterface::class, EloquentContactRepository::class);
+         $this->app->container->bind(
+             ContactRepositoryInterface::class, 
+             EloquentContactRepository::class
+         );
      }
 }
 ?>

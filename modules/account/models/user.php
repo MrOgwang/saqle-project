@@ -11,7 +11,7 @@ class User extends BaseUser {
 	 protected function table_schema(Table $table) : void {
 
 	 	 $upload_to = function(mixed $user){
-	 	 	 return saqle_dir()->path('users.profiles', $user);
+	 	 	 return saqle_dir()->path('users.profiles', $user->get_data());
 	 	 };
 
 	 	 $default_url = function(mixed $user){
@@ -25,17 +25,17 @@ class User extends BaseUser {
 	 	 };
 
 		 $table->fields([
-			 'gender' => choice_field()->choices([
+			 'gender' => Table::choice_field()->choices([
 			 	 'male' => 'Male', 
 			 	 'female' => 'Female'
 			 ])->use_keys()->default('male'),
 
-			 'profilephoto' => image_field()->max_size(2)->upload_to($upload_to)->default_url($default_url)
-			  ->rename_callback($rename)->depends_on(['user_id', 'gender'])->resize(['max_width' => 500, 'max_height' => 500]),
+			 'profilephoto' => Table::image_field()->max_size(2)->upload_to($upload_to)->default_url($default_url)
+			  ->rename_to($rename)->depends_on(['user_id', 'gender'])->resize(['max_width' => 500, 'max_height' => 500]),
 
-			 'online' => boolean_field()->default(false),
+			 'online' => Table::boolean_field()->default(false),
 
-			 'account_status' => choice_field()->choices([
+			 'account_status' => Table::choice_field()->choices([
 			 	 'New', 
 			 	 'Onboarding', 
 			 	 'Active', 

@@ -5,14 +5,14 @@
  * */
 
 use App\Modules\Account\Models\User;
-use App\Modules\Account\Services\SaqleProjectAuthService;
+use App\Modules\Account\Services\AuthenticationService;
 
 return [
 	 //This is the model that represents a user
 	 'model_class' => User::class,
 
 	 //This is the service class that is responsible for authentication.
- 	 'backend_class' => SaqleProjectAuthService::class,
+ 	 'backend_class' => AuthenticationService::class,
      
      //the jwt token key
  	 'jwt_key' => $_ENV['JWT_KEY'] ?? '',

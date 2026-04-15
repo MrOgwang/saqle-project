@@ -25,7 +25,7 @@ class Signup {
      }
 
 	 public function post(UserRegistrationContract $reg_contract){
-	 	 $result = $reg_service->register(...$reg_contract->validated());
+	 	 $result = $this->reg_service->register(...$reg_contract->validated());
 		 $this->auth_service->login('password', ['username' => $result->username, 'password' => $result->password]);
 
 		 return redirect(config('app.root_domain'));

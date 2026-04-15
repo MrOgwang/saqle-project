@@ -2,6 +2,7 @@
 namespace App\Authentication\Providers;
 
 use SaQle\Core\Services\Providers\ServiceProvider;
+use SaQle\Auth\Interfaces\UserProviderInterface;
 
 class AuthenticationProvider extends ServiceProvider {
      public function register(): void {

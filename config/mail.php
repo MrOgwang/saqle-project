@@ -5,6 +5,9 @@
  * */
 
 return [
+     //Email driver
+     'driver' => 'smtp',
+     
      //Email user name
      'username' => $_ENV['EMAIL_USER_NAME'],
 
@@ -21,7 +24,10 @@ return [
      'sender_name' => 'Saqle Project Team',
 
      //Email sender address
-     'sender_address' => $_ENV['EMAIL_SENDER_ADDRESS']
+     'sender_address' => $_ENV['EMAIL_SENDER_ADDRESS'],
+
+     //Email encryption
+     'encryption' => 'ssl'
  ]
 
 ?>

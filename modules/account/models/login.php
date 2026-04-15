@@ -10,21 +10,21 @@ class Login extends Model {
 	 	 $table->primary_key('login_id');
 
 	 	 $table->fields([
-			 'login_count' => integer_field()->required()->unsigned()->min(1),
+			 'login_count' => Table::integer_field()->required()->unsigned()->min(1),
 
-			 'login_datetime' => integer_field()->size('big')->required()->unsigned(),
+			 'login_datetime' => Table::integer_field()->size('big')->required()->unsigned(),
 
-			 'logout_datetime' => integer_field()->size('big')->unsigned(),
+			 'logout_datetime' => Table::integer_field()->size('big')->unsigned(),
 
-			 'login_span' => integer_field()->unsigned()->min(1),
+			 'login_span' => Table::integer_field()->unsigned()->min(1),
 
-			 'login_location' => char_field()->length(200),
+			 'login_location' => Table::char_field()->length(200),
 
-			 'login_device' => char_field()->length(200),
+			 'login_device' => Table::char_field()->length(200),
 
-			 'login_browser' => char_field()->length(200),
+			 'login_browser' => Table::char_field()->length(200),
 
-			 'user_id' => uuid_field()->required()
+			 'user_id' => Table::uuid_field()->required()
 	 	 ]);
 
 	 }

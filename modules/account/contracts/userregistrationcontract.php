@@ -2,7 +2,10 @@
 
 namespace App\Modules\Account\Contracts;
 
-use SaQle\Core\Support\{BindFrom, RequestContract};
+use SaQle\Core\Support\{
+     BindFrom, 
+     RequestContract
+};
 use SaQle\Core\Files\UploadedFile;
 
 class UserRegistrationContract extends RequestContract {
@@ -31,5 +34,13 @@ class UserRegistrationContract extends RequestContract {
       * */
      protected function authorize(): bool {
          return true;
+     }
+	 
+	 protected function after_validation(){
+         $fullname = $this->validated_data['fullname'];
+         $names = explode(" ", $fullname);
+
+         $this->validated_data['first_name'] = $names[0];
+         $this->validated_data['last_name'] = $names[1];
      }
 }
