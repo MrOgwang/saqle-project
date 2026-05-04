@@ -15,7 +15,7 @@ class User extends BaseUser {
 	 	 };
 
 	 	 $default_url = function(mixed $user){
-	 	 	 return $user['gender'] == "female" ? 
+	 	 	 return $user->gender == "female" ? 
 	 	 	 config('root_domain')."/public/static/images/layout/female.jpg" : 
 	 	 	 config('root_domain')."/public/static/images/layout/male.jpg";
 	 	 };

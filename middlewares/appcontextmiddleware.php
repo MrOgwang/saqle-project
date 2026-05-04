@@ -1,13 +1,12 @@
 <?php
 namespace App\Middlewares;
 
-use SaQle\Middleware\IMiddleware;
-use SaQle\Http\Response\Response;
-use SaQle\Http\Request\Request;
+use SaQle\Http\Response\HttpMessage;
+use SaQle\Middleware\MiddlewareInterface;
 
-class AppContextMiddleware extends IMiddleware {
-     public function handle(Request $request, ?Response $response = null){
-         parent::handle($request, $response);
+class AppContextMiddleware implements MiddlewareInterface {
+     public function handle($request, $response = null) : ?HttpMessage {
+         return null;
      }
 }
 ?>

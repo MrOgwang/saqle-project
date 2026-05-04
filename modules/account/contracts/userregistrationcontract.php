@@ -19,12 +19,6 @@ class UserRegistrationContract extends RequestContract {
      #[BindFrom('input', rules: ['required:true', 'max_length:50'])]
      public string $password;
 
-     #[BindFrom('input', rules: ['required:true', 'choices:male,female'])]
-     public string $gender;
-
-     #[BindFrom('input', rules: ['required:true', 'mime_types:image/jpg,image/jpeg,image/png', 'max_size:2'])]
-     public UploadedFile $profilephoto;
-
      #[BindFrom('input', rules: ['required:true', 'email:true'])]
      public string $email;
 

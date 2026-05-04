@@ -5,9 +5,10 @@
 				<h1>SaQle</h1>
 			</div>
 			<div class='flex v_center header-nav'>
-				 <a class='flex center' href='/about'>About</a>
-				 <a class='flex center' href='/signin'>Login</a>
-				 <a class='flex center' href='/signup'>Register</a>
+				 <a class='flex center' href="{{ route('app.landing') }}">Home</a>
+				 <a class='flex center' href="{{ route('app.about') }}">About</a>
+				 <a class='flex center' href="{{ route('app.login.form') }}">Login</a>
+				 <a class='flex center' href="{{ route('app.account.form') }}">Register</a>
 			</div>
 		</div>
 		<div class='saqle-landing-body'>

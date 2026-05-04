@@ -24,17 +24,13 @@ class UserRegistrationService implements IService, UserRegistrationInterface {
      #[Emits(after: ['user.registered'])]
 	 public function register(...$data) : mixed {
 
-	 	 $is_superuser = $data['is_superuser'] ?? 0;
-		 
-         return Db::transaction(function() use ($data, $is_superuser){
+         return Db::transaction(function() use ($data){
 			 $user = User::create([
 			 	 'first_name' => $data['first_name'],
 			 	 'last_name' => $data['last_name'],
 			 	 'username' => $data['username'],
 			 	 'password' => md5($data['password']),
-			 	 'is_superuser' => $is_superuser,
-			 	 'gender' => $data['gender'],
-			 	 'profilephoto' => $data['profilephoto']
+			 	 'is_superuser' => $data['is_superuser'] ?? 0
 			 ])->now();
 
 			 $contact = Contact::create([

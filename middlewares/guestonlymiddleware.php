@@ -1,19 +1,18 @@
 <?php
 namespace App\Middlewares;
 
-use SaQle\Middleware\IMiddleware;
-use SaQle\Http\Response\Response;
-use SaQle\Http\Request\Request;
+use SaQle\Http\Response\HttpMessage;
+use SaQle\Middleware\MiddlewareInterface;
 use SaQle\Auth\Guards\Guard;
 
-class GuestOnlyMiddleware extends IMiddleware {
-     public function handle(Request $request, ?Response $response = null){
+class GuestOnlyMiddleware implements MiddlewareInterface {
+     public function handle($request, $response = null) : ?HttpMessage {
 
          if(Guard::check('authenticated', $request->user)){
-             redirect(config('app.root_domain'));
+             return redirect(config('app.root_domain'));
          }
 
-         parent::handle($request, $response);
+         return null;
      }
 }
 ?>
