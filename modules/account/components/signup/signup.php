@@ -6,6 +6,7 @@ use App\Modules\Account\Services\{
 	 AuthenticationService
 };
 use App\Modules\Account\Contracts\UserRegistrationContract;
+use SaQle\Http\Response\Message;
 
 class Signup {
 	 
@@ -28,11 +29,11 @@ class Signup {
 	 	 $result = $this->reg_service->register(...$reg_contract->validated());
 		 $this->auth_service->login('password', ['username' => $result->username, 'password' => $result->password]);
 
-		 return redirect(config('app.root_domain'));
+		 return Message::redirect(config('app.root_domain'))->as_get();
 	 }
     
 	 public function get(?string $name = null, ?string $code = null){
-		 return ok([
+		 return Message::ok([
 		 	 'name'          => $name,
              'code'          => $code,
              'fullname'      => '', 

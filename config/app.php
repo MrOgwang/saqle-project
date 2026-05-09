@@ -19,7 +19,7 @@ return [
 	 'display_startup_errors' => $_ENV['DISPLAY_SETUP_ERRORS'],
 
      //the root domain
- 	 'root_domain' => "https://".$_ENV['ROOT_DOMAIN']."/",
+ 	 'root_domain' => "http://".$_ENV['ROOT_DOMAIN']."/",
 
  	 /**
       * List of all the modules in the project. 

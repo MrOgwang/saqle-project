@@ -3,6 +3,7 @@ namespace App\Modules\Account\Components\Signin;
 
 use App\Modules\Account\Services\AuthenticationService;
 use SaQle\Auth\Utils\AuthResult;
+use SaQle\Http\Response\Message;
 
 class Signin {
 	 private $auth_service;
@@ -35,11 +36,11 @@ class Signin {
 		 if($user->deleted === 1) 
 		 	 not_found_exception('Invalid credentials!');
 
-		 return ok($auth_result);
+		 return Message::ok($auth_result);
 	 }
 	 
 	 public function get(){
-		 return ok(['message' => '']);
+		 return Message::ok(['message' => '']);
 	 }
 }
 ?>
