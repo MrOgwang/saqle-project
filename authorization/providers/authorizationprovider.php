@@ -22,7 +22,7 @@ class AuthorizationProvider extends ServiceProvider {
                  }
 
                  throw new AuthenticationException('User not authenticated!');
-             }
+             } 
          );
 
      }

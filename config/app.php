@@ -25,7 +25,7 @@ return [
       * List of all the modules in the project. 
       * A module is generally a folder with controllers, templates and routes
       * */
-     'modules' => ['account'],
+     'modules' => ['account', 'admin'],
 
      //the url for media
      'media_url' => '/media/',
