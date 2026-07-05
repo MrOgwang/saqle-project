@@ -9,22 +9,22 @@ return [
      'driver' => 'smtp',
      
      //Email user name
-     'username' => $_ENV['EMAIL_USER_NAME'],
+     'username' => env('email_user_name', ''),
 
      //Email password
-     'password' => $_ENV['EMAIL_PASSWORD'],
+     'password' => env('email_password', ''),
 
      //Email host
-     'host' => $_ENV['EMAIL_HOST'],
+     'host' => env('email_host', ''),
 
      //Email port
-     'port' => $_ENV['EMAIL_PORT'],
+     'port' => env('email_port'),
 
      //Email sender name
-     'sender_name' => 'Saqle Project Team',
+     'sender_name' => 'SaQle Project Team',
 
      //Email sender address
-     'sender_address' => $_ENV['EMAIL_SENDER_ADDRESS'],
+     'sender_address' => env('email_sender_address', ''),
 
      //Email encryption
      'encryption' => 'ssl'

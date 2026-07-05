@@ -11,12 +11,7 @@ use App\Services\Providers\{
     MiddlewareServiceProvider
 };
 use App\Authorization\Providers\AuthorizationProvider;
-use App\Authentication\Providers\AuthenticationProvider;
-use App\Middlewares\{
-    AppContextMiddleware
-};
-
-use Dotenv\Dotenv;
+use SaQle\Core\Support\Environment;
 
 return function(array $overrides = []) {
      return new App(new AppSetup(
@@ -27,23 +22,19 @@ return function(array $overrides = []) {
 
          document_root: __DIR__.'/../public',
 
-         environment: 'development',
-
-         environment_loader: function(string $env){
-             Dotenv::createImmutable(dirname(__DIR__).'/env/'.$env)->load();
-         },
+         environment: Environment::DEVELOPMENT,
 
          config_dir: dirname(__DIR__).'/config',
 
          cors: $overrides['cors'] ?? [
              'required_headers' => ['Origin', 'Host', 'Referer', 'Accept', 'Content-Type'],
              'credentials'      => true,
+             'origins'          => ['*']
          ],
 
          providers: $overrides['providers'] ?? [
              DIProvider::class,
              AuthorizationProvider::class,
-             AuthenticationProvider::class,
              TemplateContextProvider::class,
              EventServiceProvider::class,
              ValidationServiceProvider::class,

@@ -5,9 +5,12 @@
  * */
 
 return [
-     //Directory blueprints
+     /**
+      * Blueprints pecify where your files get uploaded to
+      * no matter which storage mechanism you choose
+      * */ 
      'blueprints' => [
-         'users.profiles' => '/users/profiles/{{ user_id }}/'
+         'users.avatars' => '/users/avatars/{{ user_id }}/'
      ],
  ]
 ?>

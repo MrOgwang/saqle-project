@@ -35,7 +35,7 @@
              'priority' => 1,
              'timeout' => 300,
              'tries' => 1
-         ]
+         ],
      ]
 ];
 

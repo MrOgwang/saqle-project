@@ -6,24 +6,99 @@
 
 use App\Modules\Account\Models\User;
 use App\Modules\Account\Services\AuthenticationService;
+use SaQle\Auth\Identity\User\Providers\DefaultUserProvider;
 
 return [
-	 //This is the model that represents a user
+	 /**
+	  * --------------------------------------------
+	  * LOG IN STRATEGIES
+	  * -------------------------------------------
+	  * 
+	  * These are all the ways you would like 
+	  * the users of your application to log into your app
+	  * 
+	  * */
+	 'strategies' => [
+	 	 'default' => 'password',
+	 	 'all'     => ['password', 'google', 'link']
+	 ],
+
+	 /**
+      * --------------------------------------------------
+      * USER PROVIDER
+      * -------------------------------------------------
+      * 
+      * The user provider takes in a User ID and returns
+      * an instance of a user object to be injected into
+      * your request as the session user.
+      * 
+      * This allows you to define how the session user is
+      * to be represented in your application
+      * 
+      * */
+	 'user_provider' => DefaultUserProvider::class,
+
+	 /**
+      * -------------------------------------------------
+      * AUTH ROUTE
+      * -------------------------------------------------
+      * 
+      * The name of the route responsible for signing in
+      * users into your application
+      * 
+      * */
+	 'route' => 'app.login.form',
+
+	 /**
+	  * ------------------------------------------------
+	  * MODEL CLASS
+	  * ------------------------------------------------
+	  * 
+	  * This is the model that represents a user object
+	  * in your application. 
+	  * 
+	  * This class must implement a UserInterface
+	  * 
+	  * */
 	 'model_class' => User::class,
 
-	 //This is the service class that is responsible for authentication.
+	 /**
+      * ------------------------------------------------------
+      * BACKEND CLASS
+      * ------------------------------------------------------
+      * 
+      * This is the service class responsible for user authentication
+      * */
  	 'backend_class' => AuthenticationService::class,
+
+ 	 /**
+ 	  * ------------------------------------------------------------
+ 	  * PASSWORDS
+ 	  * -----------------------------------------------------------
+ 	  * 
+ 	  * Preferred password hashing strategies for your app
+ 	  * */
+ 	 'passwords' => [
+ 	 	 'default' => [
+ 	 	 	 'algorithm' => PASSWORD_ARGON2ID,
+		     'options' => [
+		         'memory_cost' => 65536,
+		         'time_cost' => 4,
+		         'threads' => 2,
+		     ],
+ 	 	 ]
+ 	 ],
      
      //the jwt token key
- 	 'jwt_key' => $_ENV['JWT_KEY'] ?? '',
+ 	 'jwt_key' => env('jwt_key', ''),
 
  	 /**
  	  * When a jwt token is issued, this is the number of minutes it is to remain valid.
  	  * Defaults to 5 minutes
  	  * */
- 	 'jwt_ttl' => $_ENV['JWT_TTL'] ?? 5,
+ 	 'jwt_ttl' => env('jwt_ttl', 5),
 
  	 //the jwt issuer
- 	 'jwt_iss' => $_ENV['JWT_ISS'] ?? ''
+ 	 'jwt_iss' => env('jwt_iss', '')
  ]
 ?>

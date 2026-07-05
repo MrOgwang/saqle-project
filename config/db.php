@@ -11,48 +11,40 @@ return [
      /**
       * The default connection to use.
       * 
+      * This only takes effect where more than one connection is listed.
+      * 
       * If not provided, the first connection in the list
-      * of connections will be used as the default connection
+      * of connections will always be used as the default connection.
+      * 
       * */
-     'default_connection' => 'accounts',
+     'default_connection' => 'main',
 
      /**
-      * The framework connection. This defines the database where the framework
-      * will keep its tables, such as sessions and migrations.
+      * The default database to use.
       * 
-      * For most applications, a single database for the project
-      * and for the framework is sufficient, but this can be a different database 
-      * if desired
+      * This only takes effect where more than one database is listed for the default connection.
       * 
-      * If not provided, the default connection will be used instead
+      * If not provided, the first database in the list
+      * of databases for the default connection will be 
+      * used as the default database.
+      * 
       * */
-     'framework_connection' => 'accounts',
+     'default_database' => 'saqle-project',
 
      /**
       * List all your database connections here!
       * */
      'connections' => [
-         'accounts' => [
-             'database' => $_ENV['MySQL_DB_NAME'], 
-             'driver'   => 'mysql', 
-             'port'     => 3306, 
-             'username' => $_ENV['MySQL_DB_USER_NAME'], 
-             'password' => $_ENV['MySQL_DB_PASSWORD'],
-             'host'     => $_ENV['MySQL_DB_HOST']
+         'main' => [
+             'driver'    => 'mysql', 
+             'port'      => 3306, 
+             'username'  => env('db_user_name', ''), 
+             'password'  => env('db_password', ''),
+             'host'      => env('db_host', 'localhost'),
+             'databases' => [
+                 'saqle-project'  => AccountsSchema::class
+             ]
          ],
-     ],
-
-     /**
-      * List all the schemas for all the available
-      * connections here.
-      * 
-      * A schema is a class that defines tables and their associated models.
-      * 
-      * Note: Saqle models are not associated to tables in and by themselevs, they are simply
-      * domain objects. To associate models to tables, you must define a schema
-      * */
-     'schemas' => [
-         'accounts' => AccountsSchema::class,
      ],
 	 
 	 /**

@@ -3,7 +3,6 @@
 /**
  * Session configurations
  * */
-
 use SaQle\Session\SessionHandler;
 
 return [

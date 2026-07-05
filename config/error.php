@@ -22,6 +22,7 @@ return [
       * 
       * If true, all exceptions are logged to a file as defined
       * by error_log_file
+      * 
       * */
      'should_log' => true,
 

@@ -1,25 +1,38 @@
 <?php
 
-/**
- * General app configurations
- * */
-
 use SaQle\Core\Files\Storage\Drivers\LocalStorageDriver;
 use SaQle\Core\Files\Generators\DefaultPrivateFileUrlGenerator;
 
 return [
 
      //the name of the application.
-     'name' => 'saqle-project',
+     'name' => env('app_name'),
 
      //whether to display errors
-	 'display_errors' => $_ENV['DISPLAY_ERRORS'],
+	 'display_errors' => env('display_errors', 0),
 
      //whether to display startup errors
-	 'display_startup_errors' => $_ENV['DISPLAY_SETUP_ERRORS'],
+	 'display_startup_errors' => env('display_startup_errors', 0),
 
-     //the root domain
- 	 'root_domain' => "http://".$_ENV['ROOT_DOMAIN']."/",
+     //domain configurations
+     'domain' => [
+         /**
+          * The canonical/root domain of the application.
+          * Used for URL genetaion and redirects
+          * */
+         'root' => "http://".env('root_domain'),
+
+         /**
+          * Domains that represent the central application
+          * */
+         'hosts' => [],
+
+         /**
+          * Hostnames that should never be interpreted
+          * as tenants
+          * */
+         'reserved_subdomains' => ['www']
+     ],
 
  	 /**
       * List of all the modules in the project. 
@@ -27,20 +40,11 @@ return [
       * */
      'modules' => ['account', 'admin'],
 
-     //the url for media
-     'media_url' => '/media/',
-
      //the media url encryption key
-     'media_encrypt_key' => '3rt8vfweft9823t2gfv29y23ud-02cfi9ft39fg239',
+     'media_encrypt_key' => env('media_encrypt_key', ''),
 
      //the media url encryption salt
-     'media_encrypt_salt' => 'media-url-salt',
-
-     //the url prefix for cron jobs
-     'cron_url' => '/cron/',
-
- 	 //whether to keep media in document root i.e public folder
- 	 'hidden_media_folder' => true,
+     'media_encrypt_salt' => env('media_encrypt_salt', ''),
 
      //media storage drivers
      'media_storage_drivers' => [
@@ -84,17 +88,15 @@ return [
        * */
      'component_template_ext' => 'html',
 
-     //date and time formats
- 	 'date_added_format' => 'jS M Y',
- 	 'date_display_format' => 'jS M Y',
- 	 'datetime_display_format' => 'jS M Y h:s:m a',
+     //system date format
      'system_date_format' => 'd-m-Y',
 
-     //default timezone
- 	 'timezone' => 'Africa/Nairobi',
-
- 	 //system administrator settings
- 	 'system_admin_email' => '',
- 	 'system_admin_name'  => ''
+     //default time zone
+     'timezone' => 'Africa/Nairobi',
+     
+     //system administrator settings
+     'system_admin_email' => '',
+     
+     'system_admin_name'  => ''
  ]
 ?>

@@ -74,17 +74,17 @@ return [
       * 
       * */
      'with_user_audit' => true,
-     //'author_column' => 'added_by',
-     //'modifier_column' => 'modified_by',
-     //'remover_column' => 'deleted_by',
+     'author_column' => 'author_id',
+     'modifier_column' => 'modifier_id',
+     'remover_column' => 'remover_id',
 
      'with_timestamps' => true,
-     //'created_at_column' => 'date_added',
-     //'modified_at_column' => 'last_modified',
-     //'removed_at_column' => 'deleted_at',
+     'created_at_column' => 'created_at',
+     'modified_at_column' => 'modified_at',
+     'removed_at_column' => 'removed_at',
 
      'with_soft_delete' => true,
-     //'is_removed_column' => 'deleted',
+     'is_removed_column' => 'is_removed',
 
      /**
       * What happens when duplicate data is encountered during insert or update operations.
