@@ -13,7 +13,7 @@ use App\Services\Providers\{
 use App\Authorization\Providers\AuthorizationProvider;
 use SaQle\Core\Support\Environment;
 
-return function(array $overrides = []) {
+return function(array $overrides = []){
      return new App(new AppSetup(
 
          base_path: dirname(__DIR__),

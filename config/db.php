@@ -29,7 +29,7 @@ return [
       * used as the default database.
       * 
       * */
-     'default_database' => 'saqle-project',
+     'default_database' => env('db_name', ''),
 
      /**
       * List all your database connections here!
@@ -42,7 +42,7 @@ return [
              'password'  => env('db_password', ''),
              'host'      => env('db_host', 'localhost'),
              'databases' => [
-                 'saqle-project'  => AccountsSchema::class
+                 env('db_name', '') => AccountsSchema::class
              ]
          ],
      ],

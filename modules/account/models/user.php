@@ -25,22 +25,22 @@ class User extends BaseUser {
 	 	 };
 
 		 $table->fields([
-			 'gender' => Table::choice_field()->choices([
+			 'gender' => Table::choice_field([
 			 	 'male' => 'Male', 
 			 	 'female' => 'Female'
-			 ])->use_keys()->default('male'),
+			 ], true)->default('male'),
 
 			 'profilephoto' => Table::image_field()->max_size(2)->upload_to($upload_to)->default_url($default_url)
 			  ->rename_to($rename)->depends_on(['user_id', 'gender'])->resize(['max_width' => 500, 'max_height' => 500]),
 
 			 'online' => Table::boolean_field()->default(false),
 
-			 'account_status' => Table::choice_field()->choices([
+			 'account_status' => Table::choice_field([
 			 	 'New', 
 			 	 'Onboarding', 
 			 	 'Active', 
 			 	 'Disabled'
-			 ])->use_keys()->default(0)
+			 ], true)->default(0)
 		 ]);
 
 		 parent::table_schema($table);

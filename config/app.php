@@ -38,7 +38,7 @@ return [
       * List of all the modules in the project. 
       * A module is generally a folder with controllers, templates and routes
       * */
-     'modules' => ['account', 'admin'],
+     'modules' => ['account'],
 
      //the media url encryption key
      'media_encrypt_key' => env('media_encrypt_key', ''),

@@ -11,7 +11,7 @@ final class HomeResolver implements RouteResolver {
 	 public function routes() : array {
 	 	 return [
 		     'landing' => fn($r) => $r->target('cta')->compose_with(['landing'])->name('app.landing'),
-		     'waffle' => fn($r) => $r->target('home')->name('app.waffle')
+		     'waffle' => fn($r) => $r->target('account.home')->name('app.waffle')
 	     ];
 	 }
 

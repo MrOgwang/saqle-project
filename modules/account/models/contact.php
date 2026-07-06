@@ -10,19 +10,19 @@ class Contact extends Model {
       	 $table->primary_key('contact_id');
 
       	 $table->fields([
-		     'contact_type' => Table::choice_field()->required()->choices([
+		     'contact_type' => Table::choice_field([
 		     	 'email' => 'Email Address', 
 		     	 'phone' => 'Phone Number'
-		      ])->use_keys(),
-		     'contact_class' => Table::choice_field()->required()->choices([
+		      ], true)->required(),
+		     'contact_class' => Table::choice_field([
 		     	 'primary'   => 'Primary contact', 
 		     	 'secondary' => 'Secondary contact'
-		      ])->use_keys(),
+		      ])->required(),
 		     'contact' => Table::char_field()->required()->max_length(200),
-		     'owner_type' => Table::choice_field()->required()->choices([
+		     'owner_type' => Table::choice_field([
 		     	 'tenant' => 'Organizationn owns contact', 
 		     	 'user'   => 'User owns contact'
-		      ])->use_keys(),
+		      ])->required(),
 		     'owner_id' => Table::char_field()->required()->max_length(100)
       	 ]);
 
