@@ -82,6 +82,15 @@ return [
      'extra_models_dirs' => [],
 
      /**
+       * By default, routes will be searched in the top level project directory, or inside
+       * the individual module directories as listed in modules. 
+       * 
+       * In cases where your routes also exist in other places, list the directory
+       * names here relative to the root directory.
+     * */
+     'extra_routes_dirs' => [],
+
+     /**
        * This is the extension of component temnplate files:
        * 
        * Defaults to html
