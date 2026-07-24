@@ -4,7 +4,7 @@ namespace App\Modules\Account\Repositories;
 
 use SaQle\Auth\Interfaces\UserRepositoryInterface;
 use App\Modules\Account\Models\User;
-use SaQle\Auth\Interfaces\UserInterface;
+use SaQle\Auth\Identity\User\Interfaces\UserInterface;
 
 class EloquentUserRepository implements UserRepositoryInterface {
 

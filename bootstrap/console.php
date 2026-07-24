@@ -26,7 +26,7 @@ use SaQle\Http\Cors\Middlewares\CorsMiddleware;
 use SaQle\Http\Request\RequestScope;
 
  return 
- App::http(dirname(__DIR__))
+ App::console(dirname(__DIR__))
  ->environment(Environment::DEVELOPMENT)
  ->providers(
      DIProvider::class,
@@ -34,18 +34,10 @@ use SaQle\Http\Request\RequestScope;
      TemplateContextProvider::class,
      EventServiceProvider::class,
      ValidationServiceProvider::class
- )
- ->cors(fn($cors) => $cors
-     ->allow_origins('*')
-     ->allow_credentials()
-     ->required_headers(
-         'Origin',
-         'Host',
-         'Referer',
-         'Accept',
-         'Content-Type'
-     )
- )
+ ) 
+ ->commands(function($commands){
+
+ })
  ->middleware(function($middleware){ 
 
      $middleware->add('authentication', AuthenticationMiddleware::class);

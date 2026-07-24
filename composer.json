@@ -6,7 +6,7 @@
      "prefer-stable": true,
      "require": {
          "php": "^8.4",
-         "mrogwang/saqle": "^0.2.0"
+         "mrogwang/saqle": "^0.3.0"
      },
      "autoload": {
          "psr-4": {

@@ -3,6 +3,5 @@
 require 'vendor/autoload.php';
 require 'autoload.php';
 
-$app_factory = require 'bootstrap/app.php';
-$app = $app_factory();
+$app = require 'bootstrap/console.php';
 $app->run($argv);

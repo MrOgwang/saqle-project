@@ -1,20 +1,29 @@
 <div class='saqle-about'>
-	 <h1>About</h1>
-	 <p>SaQle is a rapid web app development MVC framework for PHP Developers. This is a fan personal project and by no means meant to compete Laravel or CakePhp and the likes. However, for developers looking to rapidly deploy small to medium scale web apps and/or prototypes, this framework will get you started quickly and get your idea out to the world.</p>
+     <h1>About</h1>
+     <p>SaQle is a simple, component based, MVC framework for rapid prototyping.</p>
+     <p>It is designed to be super light weight, easy to pick up by anyone from beginner to expert level PHP developers.</p>
+     <p>SaQle is built to help get you from idea to prototype/POC in hours instead of days while
+     giving you a solid foundation to build a complex and secure application on.</p>
 
-     <h2>Some Features</h2>
-     <ul>
-     	 <li>Integrated CRUD for database interaction</li>
-     	 <li>MVC architecture</li>
-     	 <li>Request dispatcher with clean, custom URLs and routes</li>
-     	 <li>Built-in validation</li>
-     	 <li>Basic templating with PHP syntax</li>
-     	 <li>Cookies, security, session, and request handling management components</li>
-     	 <li>User input sanitization</li>
-     	 <li>Basic authorization and authentication</li>
-     	 <li>Multitenancy handling components</li>
-     	 <li>Email feature with PHPMailer</li>
-     	 <li>SMS feature with Twilio</li>
-     	 <li>Image and video uploads resizing and cropping</li>
+     <h2>Feature Overview</h2>
+
+     @let($features = [
+         'A simple, fully functional and customizable ORM for database interaction',
+         'Component first MVC architecture for ease of re-use',
+         'Request dispatcher with clean, custom URLs and routes',
+         'Built-in model and forms validation',
+         'Simple but powerful templating engine',
+         'Cookies, security, session, and request handling management components',
+         'User input sanitization',
+         'Customizable and extendable authorization and authentication',
+         'Out of the box multitenancy support',
+         'Out of the box image/video uploads, resizing and cropping',
+         'Out of the box administrator panel'
+     ])
+
+     <ul class="feature-list">
+         @foreach($features as $f)
+             <li>{{ $f }}</li>
+         @endforeach
      </ul>
 </div>

@@ -30,7 +30,7 @@ class UserRegistrationService implements IService, UserRegistrationInterface {
 			 	 'last_name' => $data['last_name'],
 			 	 'username' => $data['username'],
 			 	 'password' => md5($data['password']),
-			 	 'is_superuser' => $data['is_superuser'] ?? 0
+			 	 'is_super_admin' => $data['is_super_admin'] ?? 0
 			 ])->now();
 
 			 $contact = Contact::create([

@@ -1,22 +1,32 @@
 .saqle-landing-wrapper{
-	width:100vw;
-	background-color:var(--background_color);
+	width:100%;
 }
 .saqle-landing{
 	display:grid;
-	grid-template-rows:70px 1fr;
+	grid-template-rows:auto 1fr;
 	grid-template-columns:1fr;
-	width:70%;
+	width:80%;
 }
 .saqle-landing-body{
 	min-height: calc(100vh - 70px);
 	overflow-y: auto;
 }
 .saqle-landing-header{
-
+	background-color:#1E293B;
+	padding-left:1em;
+	padding-right:1em;
+	padding-top:.5em;
+	padding-bottom:.5em;
+	border-radius: 10px;
+	margin-top:10px;
 }
 .header-title{
 	flex: 1;
+}
+.header-title img{
+	height:40px;
+	width:auto;
+	object-fit: contain;
 }
 .header-title h1{
 	color:#fff;

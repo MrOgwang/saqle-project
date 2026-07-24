@@ -17,7 +17,6 @@ class AuthorizationProvider extends ServiceProvider {
 
              function($request){
                  if($request->is_web_request()){
-                     $request->session->set('auth.next', $request->uri(), true);
                      redirect(route('app.login.form'));
                  }
 

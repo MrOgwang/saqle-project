@@ -2,14 +2,16 @@
 namespace App\Middlewares;
 
 use SaQle\Http\Response\Message;
-use SaQle\Middleware\MiddlewareInterface;
+use SaQle\Middleware\RequestMiddleware;
 use SaQle\Auth\Guards\Guard;
 
-class GuestOnlyMiddleware implements MiddlewareInterface {
-     public function handle($request, $response = null) : ?Message {
+class GuestOnlyMiddleware implements RequestMiddleware {
+     public function before($request) : ?Message {
 
          if(Guard::check('authenticated', $request->user)){
-             return Message::redirect(config('app.root_domain'))->as_get();
+             if($request->uri() !== "/"){
+                 return redirect(config('app.domain.root'));
+             }
          }
 
          return null;

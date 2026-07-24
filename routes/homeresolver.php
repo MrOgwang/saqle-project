@@ -10,10 +10,10 @@ final class HomeResolver implements RouteResolver {
 
 	 public function routes() : array {
 	 	 return [
-		     'landing' => fn($r) => $r->target('cta')->compose_with(['landing'])->name('app.landing'),
+		     'landing' => fn($r) => $r->target('cta')->layout(['landing'])->name('app.landing'),
 		     'waffle' => fn($r) => $r->target('account.home')->name('app.waffle')
 	     ];
-	 }
+	 } 
 
 	 public function resolve($request) : string {
 	 	 return !Guard::check('authenticated', $request->user) ? 'landing' : 'waffle';

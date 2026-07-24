@@ -7,8 +7,8 @@ use SaQle\Routes\Router;
 
 Router::resolve('get', '/', HomeResolver::class);
 
-Router::get("/", 'cta')->compose_with(['landing'])->name('app.landing');
+Router::get("/", 'cta')->layout(['landing'])->name('app.landing');
 
-Router::get("/about/", 'about')->compose_with(['landing'])->name('app.about');
+Router::get("/about", 'about')->layout(['landing'])->name('app.about');
 
 ?>
