@@ -17,7 +17,7 @@ class AuthorizationProvider extends ServiceProvider {
 
              function($request){
                  if($request->is_web_request()){
-                     redirect(route('app.login.form'));
+                     redirect(route('app.login.form', [], ['next' => $request->uri()]));
                  }
 
                  throw new AuthenticationException('User not authenticated!');

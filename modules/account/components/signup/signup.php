@@ -25,22 +25,22 @@ class Signup {
          $this->auth_service = resolve(AuthenticationService::class);
      }
 
-	 public function post(UserRegistrationContract $reg_contract){
-	 	 $result = $this->reg_service->register(...$reg_contract->validated());
+	 public function post(UserRegistrationContract $contract){
+
+	 	 $result = $this->reg_service->register(...$contract->validated());
+
 		 $this->auth_service->login('password', ['username' => $result->username, 'password' => $result->password]);
 
-		 return Message::redirect(config('app.root_domain'))->as_get();
+		 return Message::redirect(route('app.waffle'));
+
 	 }
     
 	 public function get(?string $name = null, ?string $code = null){
+
 		 return Message::ok([
-		 	 'name'          => $name,
-             'code'          => $code,
-             'fullname'      => '', 
-             'contact'       => '',
-             'username'      => '',
-             'password'      => ''
+		 	 'form' => new UserRegistrationContract()->form('signupform')
          ]);
+
 	 }
 }
 ?>

@@ -1,46 +1,25 @@
 <form method='POST' enctype='multipart/form-data' class='saqle-signup'>
-	 {!! $csrf_token !!}
-	 <div class='flex center saqle-signup-header'>
-	 	 <div>
-	 	     <h2>Create Account</h2>
-	 	     <p>Create a free account</p>
-	 	 </div>
+	 <div class='poster'>
+	 	 <img src='{{ $layout_image_path }}/idea_market.png'>
 	 </div>
-	 <div class='saqle-signup-body'>
-	 	 <div class='form-control-group'>
- 		 	 <div class='form-control-label'>
- 		 	 	 <h3 class='poppins-semibold'>Full Name</h3>
- 		 	 </div>
- 		 	 <div class='form-control-field'>
- 		 	 	 <input required id='FullName' name='fullname' type='text'>
- 		 	 </div>
- 		 </div>
- 		 <div class='form-control-group'>
- 		 	 <div class='form-control-label'>
- 		 	 	 <h3 class='poppins-semibold'>Email</h3>
- 		 	 </div>
- 		 	 <div class='form-control-field'>
- 		 	 	 <input required id='Email' name='email' type='email'>
- 		 	 </div>
- 		 </div>
-	 	 <div class='form-control-group'>
- 		 	 <div class='form-control-label'>
- 		 	 	 <h3 class='poppins-semibold'>Username</h3>
- 		 	 </div>
- 		 	 <div class='form-control-field'>
- 		 	 	 <input required id='UserName' name='username' type='text'>
- 		 	 </div>
- 		 </div>
- 		 <div class='form-control-group'>
- 		 	 <div class='form-control-label'>
- 		 	 	 <h3 class='poppins-semibold'>Password</h3>
- 		 	 </div>
- 		 	 <div class='form-control-field'>
- 		 	 	 <input required id='Password' name='password' type='password'>
- 		 	 </div>
- 		 </div>
- 		 <div class='form-control-group'>
- 		 	 <button type='submit'>Create Account</button>
- 		 </div>
-	 </div>
+	 <div class='form'>
+		 <div class='flex center saqle-signup-header'>
+		 	 <div>
+		 	     <h2>Create Account</h2>
+		 	 </div>
+		 </div>
+		 <div class='saqle-signup-body'>
+		 	 @let($context = $form->get_context())
+		     @if($context && $context->message)
+		     <div class='form_message form_message_{{ $context->message->type}}'>
+	             <span>{{ $context->message->text }}</span>
+	         </div>
+		     @endif
+		     <ui:component name='saqle.autoform' :form='$form'/>
+		     {!! $csrf_token !!}
+	 		 <div class='form-control-group'>
+	 		 	 <button type='submit'>Create Account</button>
+	 		 </div>
+		 </div>
+	 </div> 
 </form>

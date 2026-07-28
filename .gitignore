@@ -24,3 +24,6 @@ storage/
 #ignore migrations(remove this later)
 migrations/
 snapshots/
+
+#ignore all media files
+media/

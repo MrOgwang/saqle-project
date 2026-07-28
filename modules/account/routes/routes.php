@@ -23,6 +23,9 @@ Router::route("/signin", 'account.signin')
 	 Router::method("POST", "post")->name('submit');
 });
 
-Router::get("/signout/", 'account.signout@signout')->name('app.logout');
+Router::get("/signout/", 'account.signout@signout')
+->middleware(['authentication', 'authorization'])
+->authorize('authenticated')
+->name('app.logout');
 
 ?>

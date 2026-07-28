@@ -29,7 +29,7 @@ class UserRegistrationService implements IService, UserRegistrationInterface {
 			 	 'first_name' => $data['first_name'],
 			 	 'last_name' => $data['last_name'],
 			 	 'username' => $data['username'],
-			 	 'password' => md5($data['password']),
+			 	 'password' => $data['password'],
 			 	 'is_super_admin' => $data['is_super_admin'] ?? 0
 			 ])->now();
 

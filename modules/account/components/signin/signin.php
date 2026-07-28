@@ -13,9 +13,9 @@ class Signin {
      }
 
 	 public function post(
-	 	 string $username, 
-	 	 string $password,
-	 	 ?string $auth_next = null
+	 	 string  $username, 
+	 	 string  $password,
+	 	 ?string $next = null
 	 ){
 		 $auth_result = $this->auth_service->login('password', ['username' => $username, 'password' => $password]);
 
@@ -23,24 +23,33 @@ class Signin {
 		 	 $auth_result->next = $next;
 		 }
 
-		 if(!$auth_result->success)
-		 	 bad_request_exception('Invalid Credentials!');
+		 if(!$auth_result->success){
+		 	 throw bad_request_exception($auth_result->message);
+		 }
 
 		 $user = $auth_result->user;
 
-         //Is user account disabled
-		 if($user->disabled === 1) 
-		 	 bad_request_exception('Your account has been disabled. Please consult system administrator');
+         //is user account disabled
+		 if($user->account_status === 3){
+		 	 throw bad_request_exception('Account disabled. Consult your system administrator');
+		 } 
+		 	 
+		 //is user account deleted
+		 if($user->deleted === 1){
 
-		 //Is user account deleted
-		 if($user->deleted === 1) 
-		 	 not_found_exception('Invalid credentials!');
+		 	 //here one may want to trigger an account recovery flow instead
+		 	 throw not_found_exception('Invalid credentials!');
+		 }
 
 		 return Message::ok($auth_result);
+
+		 //return Message::redirect(route('app.waffle'));
 	 }
 	 
 	 public function get(){
-		 return Message::ok(['message' => '']);
+		 return Message::ok([
+		 	 'message' => flash_from_session('__errors', null)
+		 ]);
 	 }
 }
 ?>

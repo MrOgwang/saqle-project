@@ -53,16 +53,14 @@ use SaQle\Http\Request\RequestScope;
      $middleware->add('cors', CorsMiddleware::class);
      $middleware->add('csrf', CsrfMiddleware::class, RequestScope::WEB);
      $middleware->add('authorization', AuthorizationMiddleware::class);
-     $middleware->add('tenantcontext', TenantMiddleware::class);
+     //$middleware->add('tenantcontext', TenantMiddleware::class);
      $middleware->add('guestonly', GuestOnlyMiddleware::class, RequestScope::WEB);
-     $middleware->add('context', AppContextMiddleware::class);
 
      $middleware->global([
          'canonicalurl',
          'cors',
          'csrf',
-         'tenantcontext',
-         'context'
+         //'tenantcontext'
      ]);
 
  })

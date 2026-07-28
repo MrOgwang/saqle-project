@@ -523,9 +523,10 @@ table tbody tr:hover{
 }
 .form-control-label{
 	 font-weight:400;
+	 font-size:10px;
 }
 .form-control-label:not(.form-control-label-focused){
-	 color:var(--steel_gray_300);
+	 color:var(--steel_gray_500);
 }
 .form-control-label-focused{
 	 color:var(--theme_bluish_color);
@@ -554,7 +555,6 @@ table tbody tr:hover{
 	 padding: 1em!important;
 	 border-radius: 5px;
 	 margin-top: 5px;
-	 color: var(--steel_gray_300);
 	 width: 100%;
 }
 
@@ -588,7 +588,7 @@ input:-webkit-autofill:active{
 .form-control-field input[type=color],
 .form-control-field select,
 .form-control-field label{
-	 height:auto
+	 height:35px;
 }
 .form-control-field textarea{
 	 min-height:70px;
