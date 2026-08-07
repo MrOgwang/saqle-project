@@ -7,6 +7,8 @@ class Login extends Model {
 	
 	 protected function table_schema(Table $table) : void {
 
+	 	 $table->name('logins');
+
 	 	 $table->primary_key('login_id');
 
 	 	 $table->fields([

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types = 1);
 
 namespace App\Databases\Schemas;
@@ -13,11 +14,11 @@ use App\Modules\Account\Models\{
 class AccountsSchema extends Schema {
 
 	 protected array $models = [
-	  	 'users' => User::class,
-	  	 'contacts' => Contact::class,
-	  	 'verificationcodes' => Vercode::class
+	  	 User::class,
+	  	 Contact::class,
+	  	 Vercode::class
 
-	  	 //list all other tables and models here
+	  	 //list other models
 	 ];
 
 }

@@ -35,15 +35,13 @@ class Signin {
 		 } 
 		 	 
 		 //is user account deleted
-		 if($user->deleted === 1){
+		 if($user->is_removed === 1){
 
 		 	 //here one may want to trigger an account recovery flow instead
 		 	 throw not_found_exception('Invalid credentials!');
 		 }
 
-		 return Message::ok($auth_result);
-
-		 //return Message::redirect(route('app.waffle'));
+		 return Message::redirect(route('app.waffle'));
 	 }
 	 
 	 public function get(){

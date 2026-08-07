@@ -3,7 +3,6 @@
 namespace App\Modules\Account\Models;
 
 use SaQle\Auth\Models\BaseUser;
-use App\Utils\FileUtils;
 use SaQle\Orm\Entities\Model\Schema\Table;
 
 class User extends BaseUser {

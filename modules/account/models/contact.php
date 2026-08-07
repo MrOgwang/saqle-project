@@ -7,6 +7,8 @@ class Contact extends Model {
 
      protected function table_schema(Table $table) : void {
 
+     	 $table->name('contacts');
+
       	 $table->primary_key('contact_id');
 
       	 $table->fields([

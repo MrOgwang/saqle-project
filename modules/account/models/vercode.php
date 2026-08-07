@@ -7,6 +7,8 @@ class Vercode extends Model {
 	
 	 protected function table_schema(Table $table) : void {
 
+	 	 $table->name('verification_codes');
+
 	 	 $table->primary_key("id");
 
 	 	 $table->fields([
