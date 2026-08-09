@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace App\Modules\Account\Routes;
 
-use SaQle\Routes\Router;
+use SaQle\Routing\Router;
 
 Router::route("/signup", 'account.signup')
 ->layout(['landing'])

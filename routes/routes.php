@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace App\Routes;
 
-use SaQle\Routes\Router;
+use SaQle\Routing\Router;
 
 Router::get("/", 'cta')
 ->middleware(['guestonly'])

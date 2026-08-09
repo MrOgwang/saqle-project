@@ -3,20 +3,28 @@
      "type": "project",
      "description": "Starter application for the SaQle PHP framework",
      "license": "MIT",
+     "minimum-stability": "dev",
      "prefer-stable": true,
      "require": {
-         "php": "^8.4",
-         "mrogwang/saqle": "^0.4.0"
+         "mrogwang/saqle": "*"
      },
+     "repositories": [
+         {
+             "type": "path",
+             "url": "../saqle",
+             "options": {
+                 "symlink": true
+             }
+         }
+     ],
      "autoload": {
          "psr-4": {
              "App\\": ""
          }
      },
      "scripts": {
-        "post-create-project-cmd": [
-            "@composer dump-autoload",
-            "@php saqle install"
-        ]
-    }
+         "post-create-project-cmd": [
+             "@composer dump-autoload"
+         ]
+     }
 }

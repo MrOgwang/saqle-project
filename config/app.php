@@ -2,6 +2,7 @@
 
 use SaQle\Core\Files\Storage\Drivers\LocalStorageDriver;
 use SaQle\Core\Files\Generators\DefaultPrivateFileUrlGenerator;
+use App\Modules\Account\Account;
 
 return [
 
@@ -38,7 +39,9 @@ return [
       * List of all the modules in the project. 
       * A module is generally a folder with controllers, templates and routes
       * */
-     'modules' => ['account'],
+     'modules' => [
+         Account::class
+     ],
 
      //the media url encryption key
      'media_encrypt_key' => env('media_encrypt_key', ''),

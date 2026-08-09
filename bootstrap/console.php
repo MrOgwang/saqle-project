@@ -13,7 +13,7 @@ use App\Middlewares\{
      AppContextMiddleware,
      GuestOnlyMiddleware
 };
-use SaQle\Routes\Middleware\{
+use SaQle\Routing\Middleware\{
      CanonicalUrlMiddleware
 };
 use SaQle\Http\Request\Middleware\CsrfMiddleware;
