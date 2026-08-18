@@ -4,7 +4,7 @@ namespace App\Modules\Account\Components\Signout;
 use App\Modules\Account\Services\AuthenticationService;
 use SaQle\Http\Response\Message;
 
-class Signout {
+class Controller {
 	 private $auth_service;
     
      public function __construct(){

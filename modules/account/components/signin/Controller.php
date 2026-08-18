@@ -5,7 +5,7 @@ use App\Modules\Account\Services\AuthenticationService;
 use SaQle\Auth\Utils\AuthResult;
 use SaQle\Http\Response\Message;
 
-class Signin {
+class Controller {
 	 private $auth_service;
     
      public function __construct(){

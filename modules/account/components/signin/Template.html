@@ -12,7 +12,7 @@
 		 <div class='saqle-signin-body'>
 		 	 @if($message)
 		 	 <div class='form-control-group'>
-		 	 	 <ui:component name="saqle.message" type="error" :message="$message"/>
+		 	 	 <ui:component name="saqle.lib.message" type="error" :message="$message"/>
 	 		 </div>
 	 		 @endif
 
@@ -40,8 +40,8 @@
 	 		         'placeholder' => "",
 	 		     ]
 	 		 )
-	 		 <ui:component name="saqle.formfield" :field="$ufield"/>
-	 		 <ui:component name="saqle.formfield" :field="$pfield"/>
+	 		 <ui:component name="saqle.lib.formfield" :field="$ufield"/>
+	 		 <ui:component name="saqle.lib.formfield" :field="$pfield"/>
 	 		 {!! $csrf_token !!}
 	 		 <div class='form-control-group'>
 	 		 	 <button type='submit'>Login</button>

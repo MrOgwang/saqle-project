@@ -5,19 +5,19 @@ namespace App\Routes;
 
 use SaQle\Routing\Router;
 
-Router::get("/", 'cta')
-->middleware(['guestonly'])
-->layout(['landing'])
-->name('app.landing');
+Router::get("/", 'app.cta')
+     ->middleware(['guestonly'])
+     ->layout(['app.landing'])
+     ->name('app.cta');
 
-Router::get("/about", 'about')
-->middleware(['guestonly'])
-->layout(['landing'])
-->name('app.about');
+Router::get("/about", 'app.about')
+     ->middleware(['guestonly'])
+     ->layout(['app.landing'])
+     ->name('app.about');
 
-Router::get("/waffle", 'account.home')
-->middleware(['authentication', 'authorization'])
-->authorize('authenticated')
-->name('app.waffle');
+Router::get("/waffle", 'app.account.waffle')
+     ->middleware(['authentication', 'authorization'])
+     ->authorize('authenticated')
+     ->name('app.waffle');
 
 ?>

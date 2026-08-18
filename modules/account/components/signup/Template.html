@@ -15,7 +15,8 @@
 	             <span>{{ $context->message->text }}</span>
 	         </div>
 		     @endif
-		     <ui:component name='saqle.autoform' :form='$form'/>
+		     @let($resource = null)
+		     <ui:component name='saqle.lib.autoform' :resource='$resource' :form='$form'/>
 		     {!! $csrf_token !!}
 	 		 <div class='form-control-group'>
 	 		 	 <button type='submit'>Create Account</button>

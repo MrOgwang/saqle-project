@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Account\Components\Home;
+namespace App\Modules\Account\Components\Waffle;
 
 use SaQle\Http\Response\Message;
 
-class Home {
+class Controller {
 	 public function get(){
 	 	 return Message::ok();
 	 }

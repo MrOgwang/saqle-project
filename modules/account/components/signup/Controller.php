@@ -8,7 +8,7 @@ use App\Modules\Account\Services\{
 use App\Modules\Account\Contracts\UserRegistrationContract;
 use SaQle\Http\Response\Message;
 
-class Signup {
+class Controller {
 	 
 	 private $reg_service;
 	 private $auth_service;
