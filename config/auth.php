@@ -40,14 +40,25 @@ return [
 
 	 /**
       * -------------------------------------------------
-      * AUTH ROUTE
+      * LOG IN ROUTE
       * -------------------------------------------------
       * 
       * The name of the route responsible for signing in
       * users into your application
       * 
       * */
-	 'route' => 'app.login.form',
+	 'login_route' => 'app.login.form',
+
+	 /**
+      * -------------------------------------------------
+      * LOG OUT ROUTE
+      * -------------------------------------------------
+      * 
+      * The name of the route responsible for signing out
+      * users
+      * 
+      * */
+	 'logout_route' => 'app.logout',
 
 	 /**
 	  * ------------------------------------------------
