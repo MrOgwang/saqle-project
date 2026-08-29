@@ -3,5 +3,6 @@
 require 'vendor/autoload.php';
 require 'autoload.php';
 
-$app = require 'bootstrap/console.php';
+$app = require 'src/Bootstrap/Console.php';
+
 $app->run($argv);
