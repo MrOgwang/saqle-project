@@ -24,7 +24,8 @@
      },
      "scripts": {
          "post-create-project-cmd": [
-             "@composer dump-autoload"
+             "@composer dump-autoload",
+             "@php saqle install"
          ]
      }
 }
