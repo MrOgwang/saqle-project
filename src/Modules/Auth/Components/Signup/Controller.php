@@ -1,0 +1,46 @@
+<?php
+namespace App\Modules\Auth\Components\Signup;
+
+use App\Modules\Auth\Services\{
+	 UserRegistrationService, 
+	 AuthenticationService
+};
+use App\Modules\Auth\Contracts\UserRegistrationContract;
+use SaQle\Http\Response\Message;
+
+class Controller {
+	 
+	 private $reg_service;
+	 private $auth_service;
+    
+     public function __construct(){
+     	 /**
+     	  * Note: It is important to manually resolve services, especially
+     	  * when you have service methods that emit generic events events.
+     	  * 
+     	  * The service is wrapped in a proxy, and may not always work with
+     	  * type hinting and auto wiring!
+     	  * */
+         $this->reg_service = resolve(UserRegistrationService::class);
+         $this->auth_service = resolve(AuthenticationService::class);
+     }
+
+	 public function post(UserRegistrationContract $contract){
+
+	 	 $result = $this->reg_service->register(...$contract->validated());
+
+		 $this->auth_service->login('password', ['username' => $result->username, 'password' => $result->password]);
+
+		 return Message::redirect(route('app.waffle'));
+
+	 }
+    
+	 public function get(?string $name = null, ?string $code = null){
+
+		 return Message::ok([
+		 	 'form' => new UserRegistrationContract()->form('signupform')
+         ]);
+
+	 }
+}
+?>

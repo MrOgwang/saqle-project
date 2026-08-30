@@ -2,7 +2,7 @@
 
 use SaQle\Core\Files\Storage\Drivers\LocalStorageDriver;
 use SaQle\Core\Files\Generators\DefaultPrivateFileUrlGenerator;
-use App\Modules\Account\Account;
+use App\Modules\Auth\Account;
 
 return [
 

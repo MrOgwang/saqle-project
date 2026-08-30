@@ -3,7 +3,7 @@ namespace App\Services\Providers;
 
 use SaQle\Core\Services\Providers\ServiceProvider;
 
-use App\Modules\Account\Validators\{
+use App\Modules\Auth\Validators\{
      FullNameValidator
 };
 

@@ -1,7 +1,6 @@
 <?php
 
 require 'vendor/autoload.php';
-require 'autoload.php';
 
 $app = require 'src/Bootstrap/Console.php';
 

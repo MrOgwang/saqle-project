@@ -4,8 +4,8 @@
  * Authentication and authorization configurations
  * */
 
-use App\Modules\Account\Models\User;
-use App\Modules\Account\Services\AuthenticationService;
+use App\Modules\Auth\Models\User;
+use App\Modules\Auth\Services\AuthenticationService;
 use SaQle\Auth\Identity\User\Providers\DefaultUserProvider;
 
 return [

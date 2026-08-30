@@ -26,7 +26,7 @@ use SaQle\Http\Cors\Middlewares\CorsMiddleware;
 use SaQle\Http\Request\RequestScope;
 
  return 
- App::console(dirname(__DIR__))
+ App::console(dirname(__DIR__, 2))
  ->environment(Environment::DEVELOPMENT)
  ->providers(
      DIProvider::class,

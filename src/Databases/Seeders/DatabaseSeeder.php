@@ -2,7 +2,7 @@
 namespace App\Databases\Seeders;
 
 use SaQle\Core\Migration\Seed\DbSeeder;
-use App\Modules\Account\Models\User;
+use App\Modules\Auth\Models\User;
 
 class DatabaseSeeder extends DbSeeder {
 	 public static function get_seeds() : array {

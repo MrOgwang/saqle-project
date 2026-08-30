@@ -2,7 +2,7 @@
 namespace App\Authorization\Providers;
 
 use SaQle\Core\Services\Providers\ServiceProvider;
-use App\Modules\Account\Models\User;
+use App\Modules\Auth\Models\User;
 use SaQle\Auth\Guards\Guard;
 
 class AuthorizationProvider extends ServiceProvider {

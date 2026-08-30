@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace App\Databases\Schemas;
 
 use SaQle\Orm\Database\Schema;
-use App\Modules\Account\Models\{
+use App\Modules\Auth\Models\{
 	 User,
 	 Contact,
 	 Vercode

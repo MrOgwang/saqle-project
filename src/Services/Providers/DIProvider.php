@@ -9,12 +9,12 @@ use SaQle\Auth\Interfaces\{
      ContactRepositoryInterface,
      UserRegistrationInterface
 };
-use App\Modules\Account\Repositories\{
+use App\Modules\Auth\Repositories\{
      EloquentVerificationCodeRepository,
      EloquentUserRepository,
      EloquentContactRepository
 };
-use App\Modules\Account\Services\UserRegistrationService;
+use App\Modules\Auth\Services\UserRegistrationService;
 
 class DIProvider extends ServiceProvider {
      public function register(): void {

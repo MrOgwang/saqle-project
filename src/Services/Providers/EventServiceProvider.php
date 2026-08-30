@@ -6,7 +6,7 @@ use SaQle\Auth\Events\{
      LoginSucceeded, 
      Logout
 };
-use App\Modules\Account\Listeners\{
+use App\Modules\Auth\Listeners\{
      RecordUserLogIn, 
      RecordUserLogOut
 };
