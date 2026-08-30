@@ -32,6 +32,11 @@ use App\Modules\Auth\Listeners\{
 use App\Modules\Auth\Models\User;
 use SaQle\Auth\Guards\Guard;
 use SaQle\Auth\Exceptions\AuthenticationException;
+use App\Modules\Auth\Middleware\GuestOnlyMiddleware;
+use SaQle\Auth\Middleware\{
+      AuthorizationMiddleware,
+      AuthenticationMiddleware
+};
 
 class Auth extends Module {
 
@@ -86,6 +91,11 @@ class Auth extends Module {
          $app->events->add(Logout::class, [
              RecordUserLogOut::class
          ]);
+
+         //register http middleware
+         $app->http_middleware->add('authentication', AuthenticationMiddleware::class, false);
+         $app->http_middleware->add('authorization', AuthorizationMiddleware::class, false);
+         $app->http_middleware->add('guestonly', GuestOnlyMiddleware::class, false, false);
 
      } 
 
