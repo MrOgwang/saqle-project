@@ -12,8 +12,7 @@ return [
       * -------------------------------------------------
       * 
       * Protect the adminsitrator panel or individual resource
-      * access with authorization guards as registered in your 
-      * AuthorizationProvider
+      * access with authorization guards
       * 
       * */
      'authorization' => [

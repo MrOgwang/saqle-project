@@ -1,5 +1,6 @@
 <?php
-namespace App\Middlewares;
+
+namespace App\Modules\Auth\Middleware;
 
 use SaQle\Http\Response\Message;
 use SaQle\Middleware\RequestMiddleware;

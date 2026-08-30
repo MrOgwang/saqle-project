@@ -2,7 +2,7 @@
 
 use SaQle\Core\Files\Storage\Drivers\LocalStorageDriver;
 use SaQle\Core\Files\Generators\DefaultPrivateFileUrlGenerator;
-use App\Modules\Auth\Account;
+use App\Modules\Auth\Auth;
 
 return [
 
@@ -40,7 +40,7 @@ return [
       * A module is generally a folder with controllers, templates and routes
       * */
      'modules' => [
-         Account::class
+         Auth::class
      ],
 
      //the media url encryption key

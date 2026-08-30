@@ -5,8 +5,23 @@ namespace App\Modules\Auth\Routes;
 
 use SaQle\Routing\Router;
 
-Router::route("/signup", 'app.account.signup')
-     ->layout(['app.landing'])
+Router::get("/", 'app.auth.cta')
+     ->middleware(['guestonly'])
+     ->layout(['app.auth.landing'])
+     ->name('app.cta');
+
+Router::get("/about", 'app.auth.about')
+     ->middleware(['guestonly'])
+     ->layout(['app.auth.landing'])
+     ->name('app.about');
+
+Router::get("/waffle", 'app.auth.waffle')
+     ->middleware(['authentication', 'authorization'])
+     ->authorize('authenticated')
+     ->name('app.waffle');
+
+Router::route("/signup", 'app.auth.signup')
+     ->layout(['app.auth.landing'])
      ->middleware(['guestonly'])
      ->name("app.signup")
      ->methods(function(){
@@ -14,8 +29,8 @@ Router::route("/signup", 'app.account.signup')
 		 Router::method("POST", "post")->name('submit');
 	 });
 
-Router::route("/signin", 'app.account.signin')
-	 ->layout(['app.landing'])
+Router::route("/signin", 'app.auth.signin')
+	 ->layout(['app.auth.landing'])
 	 ->middleware(['guestonly'])
 	 ->name("app.login")
 	 ->methods(function(){
@@ -23,7 +38,7 @@ Router::route("/signin", 'app.account.signin')
 		 Router::method("POST", "post")->name('submit');
 	 });
 
-Router::get("/signout", 'app.account.signout@signout')
+Router::get("/signout", 'app.auth.signout@signout')
 	 ->middleware(['authentication', 'authorization'])
 	 ->authorize('authenticated')
 	 ->name('app.logout');

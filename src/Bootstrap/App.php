@@ -1,18 +1,11 @@
 <?php
 
 use SaQle\App\App;
-use App\Services\Providers\{
-    TemplateContextProvider,
-    DIProvider,
-    EventServiceProvider,
-    ValidationServiceProvider
+use App\Providers\{
+    SharedTemplateContext
 };
-use App\Authorization\Providers\AuthorizationProvider;
 use SaQle\Core\Support\Environment;
-use App\Middlewares\{
-     AppContextMiddleware,
-     GuestOnlyMiddleware
-};
+use App\Modules\Auth\Middleware\GuestOnlyMiddleware;
 use SaQle\Routing\Middleware\{
      CanonicalUrlMiddleware
 };
@@ -29,11 +22,7 @@ use SaQle\Http\Request\RequestScope;
  App::http(dirname(__DIR__, 2))
  ->environment(Environment::DEVELOPMENT)
  ->providers(
-     DIProvider::class,
-     AuthorizationProvider::class,
-     TemplateContextProvider::class,
-     EventServiceProvider::class,
-     ValidationServiceProvider::class
+     SharedTemplateContext::class
  )
  ->cors(fn($cors) => $cors
      ->allow_origins('*')
@@ -48,20 +37,43 @@ use SaQle\Http\Request\RequestScope;
  )
  ->middleware(function($middleware){ 
 
-     $middleware->add('authentication', AuthenticationMiddleware::class);
-     $middleware->add('canonicalurl', CanonicalUrlMiddleware::class, RequestScope::WEB);
-     $middleware->add('cors', CorsMiddleware::class);
-     $middleware->add('csrf', CsrfMiddleware::class, RequestScope::WEB);
-     $middleware->add('authorization', AuthorizationMiddleware::class);
-     //$middleware->add('tenantcontext', TenantMiddleware::class);
-     $middleware->add('guestonly', GuestOnlyMiddleware::class, RequestScope::WEB);
+     $middleware->add(
+         name: 'authentication', 
+         class: AuthenticationMiddleware::class,
+         is_global: false
+     );
 
-     $middleware->global([
-         'canonicalurl',
-         'cors',
-         'csrf',
-         //'tenantcontext'
-     ]);
+     $middleware->add(
+         name: 'canonicalurl', 
+         class: CanonicalUrlMiddleware::class,
+         is_global: true,
+         is_api: false
+     );
 
+     $middleware->add(
+         name: 'cors', 
+         class: CorsMiddleware::class,
+         is_global: true
+     );
+
+     $middleware->add(
+         name: 'csrf', 
+         class: CsrfMiddleware::class,
+         is_global: false,
+         is_api: false
+     );
+
+     $middleware->add(
+         name: 'authorization', 
+         class: AuthorizationMiddleware::class,
+         is_global: false
+     );
+
+     $middleware->add(
+         name: 'guestonly', 
+         class: GuestOnlyMiddleware::class,
+         is_global: false,
+         is_api: false
+     );
  })
  ->build();
