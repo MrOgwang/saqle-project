@@ -9,6 +9,13 @@ return [
      //the name of the application.
      'name' => env('app_name'),
 
+     /**
+      * Application's secret cryptographic key
+      * 
+      * This is used to sign component asset urls
+      * */
+     'key' => env('app_key'),
+
      //whether to display errors
 	 'display_errors' => env('display_errors', 0),
 
