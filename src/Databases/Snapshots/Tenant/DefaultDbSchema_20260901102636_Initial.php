@@ -17,12 +17,13 @@
 
 use SaQle\Core\Migration\Base\DbSnapshot;
 
-class AccountsSchema_20260724131649_Initial extends DbSnapshot{
+class DefaultDbSchema_20260901102636_Initial extends DbSnapshot{
 	public function get_models(){
 		return [
-			'users' => 'App\Modules\Account\Models\User',
-			'contacts' => 'App\Modules\Account\Models\Contact',
-			'verificationcodes' => 'App\Modules\Account\Models\Vercode',
+			'users' => 'App\Modules\Auth\Models\User',
+			'contacts' => 'App\Modules\Auth\Models\Contact',
+			'logins' => 'App\Modules\Auth\Models\Login',
+			'verification_codes' => 'App\Modules\Auth\Models\Vercode',
 		];
 	}
 
@@ -212,7 +213,105 @@ class AccountsSchema_20260724131649_Initial extends DbSnapshot{
 					],
 				],
 			],
-			'verificationcodes' => [
+			'logins' => [
+				'login_id' => [
+					'field' => 'SaQle\Orm\Entities\Field\Types\UuidField',
+					'def' => 'login_id VARCHAR(100) PRIMARY KEY NOT NULL',
+					'params' => [
+					],
+				],
+				'login_count' => [
+					'field' => 'SaQle\Orm\Entities\Field\Types\IntegerField',
+					'def' => 'login_count INT NOT NULL',
+					'params' => [
+					],
+				],
+				'login_datetime' => [
+					'field' => 'SaQle\Orm\Entities\Field\Types\IntegerField',
+					'def' => 'login_datetime BIGINT NOT NULL',
+					'params' => [
+					],
+				],
+				'logout_datetime' => [
+					'field' => 'SaQle\Orm\Entities\Field\Types\IntegerField',
+					'def' => 'logout_datetime BIGINT NULL',
+					'params' => [
+					],
+				],
+				'login_span' => [
+					'field' => 'SaQle\Orm\Entities\Field\Types\IntegerField',
+					'def' => 'login_span INT NULL',
+					'params' => [
+					],
+				],
+				'login_location' => [
+					'field' => 'SaQle\Orm\Entities\Field\Types\CharField',
+					'def' => 'login_location VARCHAR(100) NULL',
+					'params' => [
+					],
+				],
+				'login_device' => [
+					'field' => 'SaQle\Orm\Entities\Field\Types\CharField',
+					'def' => 'login_device VARCHAR(100) NULL',
+					'params' => [
+					],
+				],
+				'login_browser' => [
+					'field' => 'SaQle\Orm\Entities\Field\Types\CharField',
+					'def' => 'login_browser VARCHAR(100) NULL',
+					'params' => [
+					],
+				],
+				'user_id' => [
+					'field' => 'SaQle\Orm\Entities\Field\Types\UuidField',
+					'def' => 'user_id VARCHAR(100) NOT NULL',
+					'params' => [
+					],
+				],
+				'author_id' => [
+					'field' => 'SaQle\Orm\Entities\Field\Types\OneToOne',
+					'def' => 'author_id VARCHAR(100) NULL',
+					'params' => [
+					],
+				],
+				'modifier_id' => [
+					'field' => 'SaQle\Orm\Entities\Field\Types\OneToOne',
+					'def' => 'modifier_id VARCHAR(100) NULL',
+					'params' => [
+					],
+				],
+				'remover_id' => [
+					'field' => 'SaQle\Orm\Entities\Field\Types\OneToOne',
+					'def' => 'remover_id VARCHAR(100) NULL',
+					'params' => [
+					],
+				],
+				'created_at' => [
+					'field' => 'SaQle\Orm\Entities\Field\Types\DateTimeField',
+					'def' => 'created_at BIGINT NULL',
+					'params' => [
+					],
+				],
+				'modified_at' => [
+					'field' => 'SaQle\Orm\Entities\Field\Types\DateTimeField',
+					'def' => 'modified_at BIGINT NULL',
+					'params' => [
+					],
+				],
+				'removed_at' => [
+					'field' => 'SaQle\Orm\Entities\Field\Types\DateTimeField',
+					'def' => 'removed_at BIGINT NULL',
+					'params' => [
+					],
+				],
+				'is_removed' => [
+					'field' => 'SaQle\Orm\Entities\Field\Types\BooleanField',
+					'def' => 'is_removed INT NULL',
+					'params' => [
+					],
+				],
+			],
+			'verification_codes' => [
 				'id' => [
 					'field' => 'SaQle\Orm\Entities\Field\Types\UuidField',
 					'def' => 'id VARCHAR(100) PRIMARY KEY NOT NULL',
@@ -299,7 +398,9 @@ class AccountsSchema_20260724131649_Initial extends DbSnapshot{
 					'owner_id',
 				],
 			],
-			'verificationcodes' => [
+			'logins' => [
+			],
+			'verification_codes' => [
 			],
 		];
 	}
@@ -314,6 +415,7 @@ class AccountsSchema_20260724131649_Initial extends DbSnapshot{
 					'update_action' => 'cascade',
 					'local_field' => 'author',
 					'constraint_name' => 'fk_users_author',
+					'db_enforcement' => '1',
 				],
 				'modifier_id' => [
 					'ref_table' => 'users',
@@ -322,6 +424,7 @@ class AccountsSchema_20260724131649_Initial extends DbSnapshot{
 					'update_action' => 'cascade',
 					'local_field' => 'modifier',
 					'constraint_name' => 'fk_users_modifier',
+					'db_enforcement' => '1',
 				],
 				'remover_id' => [
 					'ref_table' => 'users',
@@ -330,6 +433,7 @@ class AccountsSchema_20260724131649_Initial extends DbSnapshot{
 					'update_action' => 'cascade',
 					'local_field' => 'remover',
 					'constraint_name' => 'fk_users_remover',
+					'db_enforcement' => '1',
 				],
 			],
 			'contacts' => [
@@ -340,6 +444,7 @@ class AccountsSchema_20260724131649_Initial extends DbSnapshot{
 					'update_action' => 'cascade',
 					'local_field' => 'author',
 					'constraint_name' => 'fk_contacts_author',
+					'db_enforcement' => '1',
 				],
 				'modifier_id' => [
 					'ref_table' => 'users',
@@ -348,6 +453,7 @@ class AccountsSchema_20260724131649_Initial extends DbSnapshot{
 					'update_action' => 'cascade',
 					'local_field' => 'modifier',
 					'constraint_name' => 'fk_contacts_modifier',
+					'db_enforcement' => '1',
 				],
 				'remover_id' => [
 					'ref_table' => 'users',
@@ -356,16 +462,18 @@ class AccountsSchema_20260724131649_Initial extends DbSnapshot{
 					'update_action' => 'cascade',
 					'local_field' => 'remover',
 					'constraint_name' => 'fk_contacts_remover',
+					'db_enforcement' => '1',
 				],
 			],
-			'verificationcodes' => [
+			'logins' => [
 				'author_id' => [
 					'ref_table' => 'users',
 					'ref_col' => 'user_id',
 					'delete_action' => 'restrict',
 					'update_action' => 'cascade',
 					'local_field' => 'author',
-					'constraint_name' => 'fk_verificationcodes_author',
+					'constraint_name' => 'fk_logins_author',
+					'db_enforcement' => '1',
 				],
 				'modifier_id' => [
 					'ref_table' => 'users',
@@ -373,7 +481,8 @@ class AccountsSchema_20260724131649_Initial extends DbSnapshot{
 					'delete_action' => 'restrict',
 					'update_action' => 'cascade',
 					'local_field' => 'modifier',
-					'constraint_name' => 'fk_verificationcodes_modifier',
+					'constraint_name' => 'fk_logins_modifier',
+					'db_enforcement' => '1',
 				],
 				'remover_id' => [
 					'ref_table' => 'users',
@@ -381,7 +490,37 @@ class AccountsSchema_20260724131649_Initial extends DbSnapshot{
 					'delete_action' => 'restrict',
 					'update_action' => 'cascade',
 					'local_field' => 'remover',
-					'constraint_name' => 'fk_verificationcodes_remover',
+					'constraint_name' => 'fk_logins_remover',
+					'db_enforcement' => '1',
+				],
+			],
+			'verification_codes' => [
+				'author_id' => [
+					'ref_table' => 'users',
+					'ref_col' => 'user_id',
+					'delete_action' => 'restrict',
+					'update_action' => 'cascade',
+					'local_field' => 'author',
+					'constraint_name' => 'fk_verification_codes_author',
+					'db_enforcement' => '1',
+				],
+				'modifier_id' => [
+					'ref_table' => 'users',
+					'ref_col' => 'user_id',
+					'delete_action' => 'restrict',
+					'update_action' => 'cascade',
+					'local_field' => 'modifier',
+					'constraint_name' => 'fk_verification_codes_modifier',
+					'db_enforcement' => '1',
+				],
+				'remover_id' => [
+					'ref_table' => 'users',
+					'ref_col' => 'user_id',
+					'delete_action' => 'restrict',
+					'update_action' => 'cascade',
+					'local_field' => 'remover',
+					'constraint_name' => 'fk_verification_codes_remover',
+					'db_enforcement' => '1',
 				],
 			],
 		];

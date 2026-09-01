@@ -17,10 +17,10 @@
 
 use SaQle\Core\Migration\Base\DbSnapshot;
 
-class SystemSchema_20260724131649_Initial extends DbSnapshot{
+class SystemSchema_20260901102636_Initial extends DbSnapshot{
 	public function get_models(){
 		return [
-			'users' => 'App\Modules\Account\Models\User',
+			'users' => 'App\Modules\Auth\Models\User',
 			'tenants' => 'SaQle\Auth\Models\BaseTenant',
 			'migrations' => 'SaQle\Core\Migration\Models\Migration',
 			'tenant_migrations' => 'SaQle\Core\Migration\Models\TenantMigration',
@@ -157,7 +157,7 @@ class SystemSchema_20260724131649_Initial extends DbSnapshot{
 					],
 				],
 				'url' => [
-					'field' => 'SaQle\Orm\Entities\Field\Types\UrlField',
+					'field' => 'SaQle\Orm\Entities\Field\Types\CharField',
 					'def' => 'url VARCHAR(100) NOT NULL',
 					'params' => [
 					],
@@ -446,6 +446,7 @@ class SystemSchema_20260724131649_Initial extends DbSnapshot{
 					'update_action' => 'cascade',
 					'local_field' => 'author',
 					'constraint_name' => 'fk_users_author',
+					'db_enforcement' => '1',
 				],
 				'modifier_id' => [
 					'ref_table' => 'users',
@@ -454,6 +455,7 @@ class SystemSchema_20260724131649_Initial extends DbSnapshot{
 					'update_action' => 'cascade',
 					'local_field' => 'modifier',
 					'constraint_name' => 'fk_users_modifier',
+					'db_enforcement' => '1',
 				],
 				'remover_id' => [
 					'ref_table' => 'users',
@@ -462,6 +464,7 @@ class SystemSchema_20260724131649_Initial extends DbSnapshot{
 					'update_action' => 'cascade',
 					'local_field' => 'remover',
 					'constraint_name' => 'fk_users_remover',
+					'db_enforcement' => '1',
 				],
 			],
 			'tenants' => [
@@ -476,6 +479,7 @@ class SystemSchema_20260724131649_Initial extends DbSnapshot{
 					'update_action' => 'cascade',
 					'local_field' => 'tenant',
 					'constraint_name' => 'fk_tenant_migrations_tenant',
+					'db_enforcement' => '1',
 				],
 			],
 			'sessions' => [

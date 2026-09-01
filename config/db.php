@@ -4,8 +4,7 @@
  * Database configurations
  * */
 
-use App\Databases\Schemas\AccountsSchema;
-use App\Databases\Seeders\DatabaseSeeder;
+use App\Databases\Schemas\DefaultDbSchema;
 
 return [
      /**
@@ -42,15 +41,9 @@ return [
              'password'  => env('db_password', ''),
              'host'      => env('db_host', 'localhost'),
              'databases' => [
-                 env('db_name', '') => AccountsSchema::class
+                 env('db_name', '') => DefaultDbSchema::class
              ]
          ],
-     ],
-	 
-	 /**
-	 * The seeder class will be used when you run db:seed command to fill
-     * your tables with intial data as you will have defined in the seeding data files.
-	 */
- 	 'seeder' => DatabaseSeeder::class,
+     ]
 ]
 ?>

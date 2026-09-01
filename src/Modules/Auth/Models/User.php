@@ -4,7 +4,9 @@ namespace App\Modules\Auth\Models;
 
 use SaQle\Auth\Models\BaseUser;
 use SaQle\Orm\Entities\Model\Schema\Table;
+use SaQle\Core\Support\SchemaIndex;
 
+#[SchemaIndex(0)]
 class User extends BaseUser {
 
 	 protected function table_schema(Table $table) : void {
