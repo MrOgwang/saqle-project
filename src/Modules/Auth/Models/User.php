@@ -24,7 +24,9 @@ class User extends BaseUser {
 			 	 'Onboarding', 
 			 	 'Active', 
 			 	 'Disabled'
-			 ], true)->default(0)
+			 ], true)->default(0),
+
+			 'is_admin' => Table::boolean_field()->default(false)
 		 ]);
 
 		 parent::table_schema($table);

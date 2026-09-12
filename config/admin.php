@@ -23,7 +23,7 @@ return [
      	  * 
      	  * Example: authenticated && admin
      	  * */
-     	 'global' => '',
+     	 'global' => 'authenticated && admin',
 
          /**
           * List resource specific guards here
@@ -44,24 +44,26 @@ return [
       * resource routes
       * 
       * */
-	 'middleware' => [
-     	 /**
-     	  * Global middleware to be run for all resource routes
-     	  * 
-     	  * @var string
-     	  * 
-     	  * Example: authenticated && admin
-     	  * */
-     	 'global' => '',
+     'middleware' => [
+         /**
+          * Global middleware to be run for all resource routes
+          * 
+          * @var array
+          *
+          * */
+         'global' => [
+             'authentication',
+             'authorization'
+         ],
 
          /**
           * List resource specific middleware here
           * 
           * @var array<key, value>
           * */
-     	 'resources' => [
+         'resources' => [
 
-     	 ]
+         ]
      ],
 
 	 /**

@@ -80,6 +80,22 @@ class Auth extends Module {
              } 
          );
 
+         $app->guards->add(
+             'admin', 
+
+             function(?User $user = null){
+                 return $user->is_admin;
+             },
+
+             function($request){
+                 if($request->is_web_request()){
+                     redirect(route('app.login.form', [], ['next' => $request->uri()]));
+                 }
+
+                 throw new AuthenticationException('User not authorised!');
+             } 
+         );
+
          //register validators
          $app->rules->add('full_name', FullNameValidator::class);
 
