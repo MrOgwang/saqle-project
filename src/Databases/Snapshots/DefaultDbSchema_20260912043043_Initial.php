@@ -17,7 +17,7 @@
 
 use SaQle\Core\Migration\Base\DbSnapshot;
 
-class DefaultDbSchema_20260901102636_Initial extends DbSnapshot{
+class DefaultDbSchema_20260912043043_Initial extends DbSnapshot{
 	public function get_models(){
 		return [
 			'users' => 'App\Modules\Auth\Models\User',

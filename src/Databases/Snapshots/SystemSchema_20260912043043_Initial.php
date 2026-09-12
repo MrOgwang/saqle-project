@@ -17,13 +17,11 @@
 
 use SaQle\Core\Migration\Base\DbSnapshot;
 
-class SystemSchema_20260901102636_Initial extends DbSnapshot{
+class SystemSchema_20260912043043_Initial extends DbSnapshot{
 	public function get_models(){
 		return [
-			'users' => 'App\Modules\Auth\Models\User',
-			'tenants' => 'SaQle\Auth\Models\BaseTenant',
 			'migrations' => 'SaQle\Core\Migration\Models\Migration',
-			'tenant_migrations' => 'SaQle\Core\Migration\Models\TenantMigration',
+			'users' => 'App\Modules\Auth\Models\User',
 			'sessions' => 'SaQle\Session\Models\Session',
 			'queue_failed_jobs' => 'SaQle\Core\Queue\Models\FailedJob',
 			'queue_jobs' => 'SaQle\Core\Queue\Models\Job',
@@ -33,6 +31,56 @@ class SystemSchema_20260901102636_Initial extends DbSnapshot{
 
 	public function get_model_fields(){
 		return [
+			'migrations' => [
+				'migration_id' => [
+					'field' => 'SaQle\Orm\Entities\Field\Types\UuidField',
+					'def' => 'migration_id VARCHAR(100) PRIMARY KEY NOT NULL',
+					'params' => [
+					],
+				],
+				'migration_name' => [
+					'field' => 'SaQle\Orm\Entities\Field\Types\CharField',
+					'def' => 'migration_name VARCHAR(100) NOT NULL',
+					'params' => [
+					],
+				],
+				'migration_timestamp' => [
+					'field' => 'SaQle\Orm\Entities\Field\Types\IntegerField',
+					'def' => 'migration_timestamp BIGINT NOT NULL',
+					'params' => [
+					],
+				],
+				'prev_migration_name' => [
+					'field' => 'SaQle\Orm\Entities\Field\Types\CharField',
+					'def' => 'prev_migration_name VARCHAR(100) NULL',
+					'params' => [
+					],
+				],
+				'prev_migration_timestamp' => [
+					'field' => 'SaQle\Orm\Entities\Field\Types\IntegerField',
+					'def' => 'prev_migration_timestamp BIGINT NULL',
+					'params' => [
+					],
+				],
+				'connection' => [
+					'field' => 'SaQle\Orm\Entities\Field\Types\CharField',
+					'def' => 'connection VARCHAR(100) NOT NULL',
+					'params' => [
+					],
+				],
+				'database' => [
+					'field' => 'SaQle\Orm\Entities\Field\Types\CharField',
+					'def' => 'database VARCHAR(100) NOT NULL',
+					'params' => [
+					],
+				],
+				'is_migrated' => [
+					'field' => 'SaQle\Orm\Entities\Field\Types\BooleanField',
+					'def' => 'is_migrated INT NOT NULL',
+					'params' => [
+					],
+				],
+			],
 			'users' => [
 				'user_id' => [
 					'field' => 'SaQle\Orm\Entities\Field\Types\UuidField',
@@ -133,138 +181,6 @@ class SystemSchema_20260901102636_Initial extends DbSnapshot{
 				'is_removed' => [
 					'field' => 'SaQle\Orm\Entities\Field\Types\BooleanField',
 					'def' => 'is_removed INT NULL',
-					'params' => [
-					],
-				],
-			],
-			'tenants' => [
-				'tenant_id' => [
-					'field' => 'SaQle\Orm\Entities\Field\Types\UuidField',
-					'def' => 'tenant_id VARCHAR(100) PRIMARY KEY NOT NULL',
-					'params' => [
-					],
-				],
-				'tenant_name' => [
-					'field' => 'SaQle\Orm\Entities\Field\Types\CharField',
-					'def' => 'tenant_name VARCHAR(100) NOT NULL',
-					'params' => [
-					],
-				],
-				'slug' => [
-					'field' => 'SaQle\Orm\Entities\Field\Types\SlugField',
-					'def' => 'slug VARCHAR(100) NOT NULL',
-					'params' => [
-					],
-				],
-				'url' => [
-					'field' => 'SaQle\Orm\Entities\Field\Types\CharField',
-					'def' => 'url VARCHAR(100) NOT NULL',
-					'params' => [
-					],
-				],
-				'created_at' => [
-					'field' => 'SaQle\Orm\Entities\Field\Types\DateTimeField',
-					'def' => 'created_at BIGINT NULL',
-					'params' => [
-					],
-				],
-				'modified_at' => [
-					'field' => 'SaQle\Orm\Entities\Field\Types\DateTimeField',
-					'def' => 'modified_at BIGINT NULL',
-					'params' => [
-					],
-				],
-			],
-			'migrations' => [
-				'migration_id' => [
-					'field' => 'SaQle\Orm\Entities\Field\Types\UuidField',
-					'def' => 'migration_id VARCHAR(100) PRIMARY KEY NOT NULL',
-					'params' => [
-					],
-				],
-				'migration_name' => [
-					'field' => 'SaQle\Orm\Entities\Field\Types\TextField',
-					'def' => 'migration_name TEXT NOT NULL',
-					'params' => [
-					],
-				],
-				'migration_timestamp' => [
-					'field' => 'SaQle\Orm\Entities\Field\Types\IntegerField',
-					'def' => 'migration_timestamp BIGINT NOT NULL',
-					'params' => [
-					],
-				],
-				'prev_migration_name' => [
-					'field' => 'SaQle\Orm\Entities\Field\Types\TextField',
-					'def' => 'prev_migration_name TEXT NULL',
-					'params' => [
-					],
-				],
-				'prev_migration_timestamp' => [
-					'field' => 'SaQle\Orm\Entities\Field\Types\IntegerField',
-					'def' => 'prev_migration_timestamp BIGINT NULL',
-					'params' => [
-					],
-				],
-				'is_migrated' => [
-					'field' => 'SaQle\Orm\Entities\Field\Types\BooleanField',
-					'def' => 'is_migrated INT NOT NULL',
-					'params' => [
-					],
-				],
-				'type' => [
-					'field' => 'SaQle\Orm\Entities\Field\Types\TextField',
-					'def' => 'type TEXT NOT NULL',
-					'params' => [
-					],
-				],
-			],
-			'tenant_migrations' => [
-				'migration_id' => [
-					'field' => 'SaQle\Orm\Entities\Field\Types\UuidField',
-					'def' => 'migration_id VARCHAR(100) PRIMARY KEY NOT NULL',
-					'params' => [
-					],
-				],
-				'tenant_id' => [
-					'field' => 'SaQle\Orm\Entities\Field\Types\OneToOne',
-					'def' => 'tenant_id VARCHAR(100) NOT NULL',
-					'params' => [
-					],
-				],
-				'migration_name' => [
-					'field' => 'SaQle\Orm\Entities\Field\Types\TextField',
-					'def' => 'migration_name TEXT NOT NULL',
-					'params' => [
-					],
-				],
-				'migration_timestamp' => [
-					'field' => 'SaQle\Orm\Entities\Field\Types\IntegerField',
-					'def' => 'migration_timestamp BIGINT NOT NULL',
-					'params' => [
-					],
-				],
-				'prev_migration_name' => [
-					'field' => 'SaQle\Orm\Entities\Field\Types\TextField',
-					'def' => 'prev_migration_name TEXT NULL',
-					'params' => [
-					],
-				],
-				'prev_migration_timestamp' => [
-					'field' => 'SaQle\Orm\Entities\Field\Types\IntegerField',
-					'def' => 'prev_migration_timestamp BIGINT NULL',
-					'params' => [
-					],
-				],
-				'is_migrated' => [
-					'field' => 'SaQle\Orm\Entities\Field\Types\BooleanField',
-					'def' => 'is_migrated INT NOT NULL',
-					'params' => [
-					],
-				],
-				'type' => [
-					'field' => 'SaQle\Orm\Entities\Field\Types\TextField',
-					'def' => 'type TEXT NOT NULL',
 					'params' => [
 					],
 				],
@@ -414,16 +330,9 @@ class SystemSchema_20260901102636_Initial extends DbSnapshot{
 
 	public function get_unique_constraints(){
 		return [
-			'users' => [
-			],
-			'tenants' => [
-				'basetenant_tenant_name_unique' => [
-					'tenant_name',
-				],
-			],
 			'migrations' => [
 			],
-			'tenant_migrations' => [
+			'users' => [
 			],
 			'sessions' => [
 			],
@@ -438,6 +347,8 @@ class SystemSchema_20260901102636_Initial extends DbSnapshot{
 
 	public function get_fk_constraints(){
 		return [
+			'migrations' => [
+			],
 			'users' => [
 				'author_id' => [
 					'ref_table' => 'users',
@@ -464,21 +375,6 @@ class SystemSchema_20260901102636_Initial extends DbSnapshot{
 					'update_action' => 'cascade',
 					'local_field' => 'remover',
 					'constraint_name' => 'fk_users_remover',
-					'db_enforcement' => '1',
-				],
-			],
-			'tenants' => [
-			],
-			'migrations' => [
-			],
-			'tenant_migrations' => [
-				'tenant_id' => [
-					'ref_table' => 'tenants',
-					'ref_col' => 'tenant_id',
-					'delete_action' => 'restrict',
-					'update_action' => 'cascade',
-					'local_field' => 'tenant',
-					'constraint_name' => 'fk_tenant_migrations_tenant',
 					'db_enforcement' => '1',
 				],
 			],
