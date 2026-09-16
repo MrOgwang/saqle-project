@@ -17,7 +17,8 @@ class User extends BaseUser {
 			 	 'female' => 'Female'
 			 ], true)->default('male'),
 			 
-			 'online' => Table::boolean_field()->default(false),
+			 'online' => Table::boolean_field()->default(false)
+			 ->description("Whether this user is currently logged in or not"),
 
 			 'account_status' => Table::choice_field([
 			 	 'New', 
@@ -27,6 +28,7 @@ class User extends BaseUser {
 			 ], true)->default(0),
 
 			 'is_admin' => Table::boolean_field()->default(false)
+			 ->description("Whether this user is an administrator or not")
 		 ]);
 
 		 parent::table_schema($table);

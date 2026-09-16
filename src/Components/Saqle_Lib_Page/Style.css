@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after{
+     box-sizing:border-box;
+}
+
 html,
 body{
 	 height:100%;
@@ -5,63 +11,21 @@ body{
 	 padding:0;
      font-size: 13px;
      line-height: 1.154;
-     font-weight: 400;
-     -webkit-font-smoothing: subpixel-antialiased;
-     background-color: var(--background_color);
-}
-body,
-textarea{
-	 font-family: "Poppins", sans-serif;
-     line-height: 1.154;
      font-smooth: always;
      -webkit-font-smoothing: subpixel-antialiased;
      -moz-osx-font-smoothing: auto;
+     font-family: "Poppins", sans-serif;
 }
-*{
-	 box-sizing:border-box;
+
+h1, h2, h3, h4, h5, h6, p, ul, ol {
+	 margin:0; 
+	 padding:0;
 }
-h1,h2,h3,h4,h5,h6,p,ul,ol{margin:0; padding:0;}
-input[type=password]:focus,
-input[type=tel]:focus,
-input[type=email]:focus,
-input[type=search]:focus,
-input[type=text]:focus,
-input[type=date]:focus,
-input[type=number]:focus,
-textarea:focus,
-select:focus,
-button:focus{
-	 outline:none;
+
+table{
+	width:100%;
 }
-input[type=password],
-input[type=tel],
-input[type=email],
-input[type=search],
-input[type=text],
-input[type=date],
-input[type=number],
-textarea,
-ol,
-ul,
-select{
-	 width:100%;
-	 list-style-type:none;
-}
-a,
-label,
-span,
-i{display:inline-block;}
-button{
-	 padding:.5em; 
-	 text-align:center; 
-	 font-weight:600;
-	 cursor:pointer;
-}
-button > .material-icons
-{
-	 display:inline-flex;
-	 vertical-align:middle;
-}
+
 .flex{
 	 display:flex;
 }
