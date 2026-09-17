@@ -46,7 +46,7 @@ use SaQle\Http\Request\RequestScope;
      $middleware->add(
          name: 'csrf', 
          class: CsrfMiddleware::class,
-         is_global: false,
+         is_global: true,
          is_api: false
      );
  })
