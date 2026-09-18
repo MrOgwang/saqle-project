@@ -12,8 +12,10 @@ class Controller {
      }
 
 	 public function signout(){
+
 	 	 $this->auth_service->logout();
-	 	 return Message::redirect(ROOT_DOMAIN)->as_get();
+
+	 	 return Message::redirect(config('app.domain.root'));
 	 }
 }
 ?>
