@@ -38,7 +38,7 @@ Router::route("/signin", 'app.auth.signin')
 		 Router::method("POST", "post")->name('submit');
 	 });
 
-Router::get("/signout", 'app.auth.signout@signout')
+Router::post("/signout", 'app.auth.signout@signout')
 	 ->middleware(['authentication', 'authorization'])
 	 ->authorize('authenticated')
 	 ->name('app.logout');
