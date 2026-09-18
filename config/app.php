@@ -1,7 +1,5 @@
 <?php
 
-use SaQle\Core\Files\Storage\Drivers\LocalStorageDriver;
-use SaQle\Core\Files\Generators\DefaultPrivateFileUrlGenerator;
 use App\Modules\Auth\Auth;
 
 return [
@@ -55,15 +53,13 @@ return [
 
      //the media url encryption salt
      'media_encrypt_salt' => env('media_encrypt_salt', ''),
-
-     //media storage drivers
+	 
+	 //media storage drivers
      'media_storage_drivers' => [
          'local' => [
-             'driver' => LocalStorageDriver::class,
-             'root' => media_root('media', false),
-             'visibility' => 'private',
-             'base_url' => '/media',
-             'private_url_generator' => DefaultPrivateFileUrlGenerator::class
+             'root'       => 'media',   //the file system directory where uploaded files are stored
+             'base_url'   => '/media/', //the url prefix used to serve uploaded files
+             'visibility' => 'private'  //private or public: whether files can be publicly accessed
          ],
      ],
 
